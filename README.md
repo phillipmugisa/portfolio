@@ -1,7 +1,7 @@
 # portfolio
 ## This repository contains code for my official portfolio website.
 
-[Visit Website](https://phillipmugisa.github.io/templates/index.html)
+[Visit Website](https://mugisathedev.netlify.app/)
 ___
 > ### __Author__: Phillip Mugisa
 > #### _Email: phillipmugisa4@gmail.com_
