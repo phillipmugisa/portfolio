@@ -1,13 +1,303 @@
-body {
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-block-size: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-inline-size: 100%;
+  display: block;
+  object-fit: contain;
+  aspect-ratio: 1/1;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------------------------- */
+/* -------------------------------------CUSTOM PROPERTIES -------------------------------------- */
+/* --------------------------------------------------------------------------------------------- */
+
+:root {
+  /* colors */
+  --primary-color: 180 100% 25%;
+  --secondary-color: 180 100% 10%;
+  --accent-color: 181 100% 34%;
+  --text-color: 180 20% 25%;
+  --white-color: 0 0% 110%;
+  --black-color: 0 0% 0%;
+
+  /* type */
+  --title-size: 2.25rem;
+  --section-title-size: 1.5rem;
+  --body-size: 1rem;
+  --overline-size: 0.75rem;
+
+  --heading-font-family: "Helvetica Neue";
+  --body-font-family: "Helvetica Neue", Arial;
+
+  --alpha: 1;
+  
+}
+
+/* --------------------------------------------------------------------------------------------- */
+/* -------------------------------------CUSTOM CLASSES ----------------------------------------- */
+/* --------------------------------------------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  gap: var(--gap);
+}
+/* aligning */
+.place-center {place-items: center}
+.place-inline-center {justify-items: center;}
+.place-block-center {align-items: center;}
+
+.flex {
+  display: flex;
+  gap: var(--gap);
+}
+
+.container-fluid,
+.wrapper {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.container {
+  inline-size: 80vw;
+  block-size: 100%;
+  margin-inline: auto;
+}
+
+/* padding */
+.pd-inline-sm {padding-inline: .5rem}
+.pd-inline-1 {padding-inline: 1rem}
+.pd-inline-2 {padding-inline: 2rem}
+.pd-inline-3 {padding-inline: 3rem}
+
+.pd-block-sm {padding-block: .5rem}
+.pd-block-1 {padding-block: 1rem}
+.pd-block-2 {padding-block: 2rem}
+.pd-block-3 {padding-block: 3rem}
+
+.pd-sm {padding: .5rem}
+.pd-1 {padding: 1rem}
+.pd-2 {padding: 2rem}
+.pd-3 {padding: 3rem}
+
+/* margin */
+.mg-inline-sm {margin-inline: .5rem}
+.mg-inline-1 {margin-inline: 1rem}
+.mg-inline-2 {margin-inline: 2rem}
+.mg-inline-3 {margin-inline: 3rem}
+
+.mg-block-sm {margin-block: .5rem}
+.mg-block-1 {margin-block: 1rem}
+.mg-block-2 {margin-block: 2rem}
+.mg-block-3 {margin-block: 3rem}
+
+.mg-sm {margin: .5rem}
+.mg-1 {margin: 1rem}
+.mg-2 {margin: 2rem}
+.mg-3 {margin: 3rem}
+
+/* gap */
+.gap-sm {gap: .5rem}
+.gap-1 {gap: 1rem}
+.gap-2 {gap: 2rem}
+.gap-3 {gap: 3rem}
+
+/* type */
+.underline {text-transform: underline;}
+.italics {text-transform: italic;}
+.text-centered {text-align: center;}
+
+/* colors */
+/* backgrounds */
+.bg-primary {background-color: hsl(var(--primary-color) / var(--alpha));}
+.bg-secondary {background-color: hsl(var(--secondary-color) / var(--alpha));}
+.bg-accent {background-color: hsl(var(--accent-color) / var(--alpha));}
+.bg-white {background-color: hsl(var(--white-color) / var(--alpha));}
+.bg-black {background-color: hsl(var(--black-color) / var(--alpha));}
+
+/* color */
+.txt-primary {color: hsl(var(--primary-color) / var(--alpha));}
+.txt-secondary {color: hsl(var(--secondary-color) / var(--alpha));}
+.txt-accent {color: hsl(var(--accent-color) / var(--alpha));}
+.txt-white {color: hsl(var(--white-color) / var(--alpha));}
+.txt-black {color: hsl(var(--black-color) / var(--alpha));}
+
+/* borders */
+.br-primary {border-color: hsl(var(--primary-color) / var(--alpha));}
+.br-secondary {border-color: hsl(var(--secondary-color) / var(--alpha));}
+.br-accent {border-color: hsl(var(--accent-color) / var(--alpha));}
+.br-black {border-color: hsl(var(--black-color) / var(--alpha));}
+
+/* alpha-value */
+.alpha-100 {--alpha: 1;}
+.alpha-90 {--alpha: .9;}
+.alpha-80 {--alpha: .8;}
+.alpha-70 {--alpha: .7;}
+.alpha-60 {--alpha: .6;}
+.alpha-50 {--alpha: .5;}
+.alpha-40 {--alpha: .4;}
+.alpha-30 {--alpha: .3;}
+.alpha-20 {--alpha: .2;}
+.alpha-10 {--alpha: .1;}
+
+
+/* --------------------------------------------------------------------------------------------- */
+/* ----------------------------------------- COMPONENTS ---------------------------------------- */
+/* --------------------------------------------------------------------------------------------- */
+
+/* type */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--lato);
+  line-height: 1.2;
+  color: var(--text-color);
+}
+
+h5,
+h6,
+p {
+  font-family: var(--poppins);
+  color: var(--text-color);
+}
+
+h1 {font-size: var(--title-size);}
+h2 {font-size: 2.125rem;}
+h3 {font-size: 2rem;}
+h4 {font-size: var(--section-title-size);}
+h5 {font-size: 1.313rem;}
+h6 {font-size: var(--overline-size);}
+p {font-size: var(--body-size);}
+
+
+/* button */
+button,
+.btn {
+  display: grid;
+  place-items: center;
+  padding: 0.5rem 1rem;
+  outline: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-size: 1rem;
+  position: relative;
+  justify-self: flex-start;
+  align-self: flex-start;
+  font-family: var(--body-font-family);
+  font-weight: 500;
+  border-width: 1.5px;
+  border-style: solid;
+  transition: all 0.15s ease-in-out;
+}
+button:disabled,
+.btn:disabled {
+  cursor:none;
+}
+
+.roundbr {border-radius: 2rem;}
+
+/* forms */
+form {
+  color: hsl(var(--text-color));
+  transition: all 0.15s ease-in-out;
+}
+
+form fieldset {
+  gap: 0 2rem;
+  border: 1px solid hsl(var(--text-color) / .5);
+  padding: 1rem;
+}
+
+form fieldset legend:after,
+form fieldset legend:before {
+  content: "";
+  display: inline-block;
+  width: clamp(1rem, 2vw, 2rem);;
+}
+
+form .form-group {
+  gap: .5rem;
+  align-items: center;
+}
+
+input {
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: 1px solid hsl(var(--text-color) / .7);
+  border-radius: .5rem;
+}
+
+input:focus {
+  border-color: hsl(var(--accent-color) / 1);
 }

@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+    /* design system */
+
+.design-system-child > .title {
+    padding: .5rem 1rem;
+}
+.design-system-child > .body {
+    --gap: 1rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.design-system-child .body.type > * {
+    margin: 0 1rem;
+    display: block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* buttons */
+button,
+.btn {
+    --color: red;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+button.bg-primary, .btn.bg-primary,
+button.br-primary, .btn.br-primary {--color: var(--primary-color);}
+button.bg-secondary, .btn.bg-secondary,
+button.br-secondary, .btn.br-secondary {--color: var(--secondary-color);}
+button.bg-accent, .btn.bg-accent,
+button.br-accent, .btn.br-accent {--color: var(--accent-color);}
+button.bg-black, .btn.bg-black,
+button.br-black, .btn.br-black {--color: var(--black-color);}
+
+/* outlined */
+button.outlined,
+.btn.outlined {
+    background-color: transparent;
 }
 
-.App-link {
-  color: #61dafb;
+button:not(.outlined),
+.btn:not(.outlined) {
+    border-color: transparent;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button.outlined:not([disabled]):hover,
+.btn.outlined:not([disabled]):hover {
+    background: hsl(var(--color) / var(--alpha));
+    color: white;
+    border-color: transparent;
+}
+
+button:not(.outlined):not([disabled]):hover,
+.btn:not(.outlined):not([disabled]):hover {
+    background-color: transparent;
+    border-color: hsl(var(--color) / var(--alpha));
+    color: hsl(var(--color) / var(--alpha));
+}
+
+button:disabled:hover,
+.btn:disabled:hover  {
+    opacity: .5;
+}
+
+button.tag,
+.btn.tag {
+    padding: .25rem 1rem;
+}
+
+button.tag:hover,
+.btn.tag:hover {
+    --alpha: .5;
+    background: hsl(var(--color) / var(--alpha));
+    color: white;
+    border-color: transparent;
 }
