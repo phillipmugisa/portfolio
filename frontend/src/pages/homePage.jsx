@@ -1,8 +1,12 @@
+import React from 'react';
+
+import PageStarter from '../components/pageStarter'
+
 function HomePage() {
     return (
-        <h1>
-            Web dev simplified
-        </h1>
+        <React.Fragment>
+            <PageStarter />
+        </React.Fragment>
     );
 }
 

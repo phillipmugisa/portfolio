@@ -1,13 +1,26 @@
 import React from 'react';
 import './App.css';
 
+import {
+  Routes ,
+  Route
+} from "react-router-dom";
+
+import Header from './components/utils/header'
+import Footer from './components/utils/footer'
+
+
 // app component imports
-import DesignSystem from './pages/designSystem';
+import HomePage from './pages/homePage';
 
 function App() {
   return (
     <React.Fragment>
-      <DesignSystem />
+      <Header />
+        <Routes>
+          <Route path={'/'} exact element={<HomePage />} />
+        </Routes>
+      <Footer />
     </React.Fragment>
   );
 }

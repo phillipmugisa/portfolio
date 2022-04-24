@@ -1,5 +1,7 @@
 import React from "react";
 import AppButton from "../components/utils/appButton";
+import Footer from "../components/utils/footer";
+import Header from "../components/utils/header";
 
 function DesignSystem() {
     return (
@@ -7,7 +9,7 @@ function DesignSystem() {
             <div className="container-fluid design-system grid">
                 <div className="container design-system-child grid mg-block-1">
                     <div className="title wrapper grid alpha-100 bg-primary txt-white place-block-center">
-                        <h4 className="child-title">Typography</h4>
+                        <h4 className="section-title">Typography</h4>
                     </div>
                     <div className="body wrapper grid type">
                         <h1>Heading 1</h1>
@@ -21,7 +23,7 @@ function DesignSystem() {
                 </div>
                 <div className="container design-system-child grid mg-block-1">
                     <div className="title wrapper grid alpha-100 bg-primary txt-white place-block-center">
-                        <h4 className="child-title">Buttons</h4>
+                        <h4 className="section-title">Buttons</h4>
                     </div>
                     <div className="body wrapper grid pd-1">
                         <div className="group grid gap1">
@@ -224,7 +226,7 @@ function DesignSystem() {
                 </div>
                 <div className="container design-system-child grid mg-block-1">
                     <div className="title wrapper grid alpha-100 bg-primary txt-white place-block-center">
-                        <h4 className="child-title">Form components</h4>
+                        <h4 className="section-title">Form components</h4>
                     </div>
                     <div className="body wrapper grid mg-block-1">
                         <form action="">
@@ -289,8 +291,22 @@ function DesignSystem() {
                             </fieldset>
                         </form>
                     </div>
+                </div>                <div className="container design-system-child grid mg-block-1">
+                    <div className="title wrapper grid alpha-100 bg-primary txt-white place-block-center">
+                        <h4 className="section-title">Header and Footer</h4>
+                    </div>
+                    <div className="body wrapper grid mg-block-1">
+                        <div className="group grid gap1">
+                            <h5 className="sub-title">Footer</h5>
+                        </div>
+                        <div className="group grid gap1">
+                            <h5 className="sub-title">Header</h5>
+                            <Header />
+                        </div>
+                    </div>
                 </div>
             </div>
+            <Footer />
         </React.Fragment>
     );
 }
