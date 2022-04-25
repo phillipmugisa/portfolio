@@ -1,3 +1,5 @@
+import React from "react";
+
 import { 
     FaGithub, FaInstagram, FaLinkedinIn,
     FaPhoneAlt, FaMapMarkedAlt,
