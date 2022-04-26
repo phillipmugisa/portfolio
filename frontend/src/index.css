@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700;800;900&display=swap');
 
 
 /* Box sizing rules */
@@ -108,6 +109,7 @@ select {
   --overline-size: 0.75rem;
 
   --heading-font-family: 'Roboto Mono', monospace;
+  /* --heading-font-family: 'Source Code Pro', monospace; */
   --section-heading-font-family: 'Roboto Slab', serif;
   --body-font-family: 'Montserrat', sans-serif;
   --alpha: 1;
@@ -237,7 +239,7 @@ h4 {
 
 h1,
 h2 {
-  font-family: var(--section-heading-font-family);
+  font-family: var(--heading-font-family);
 }
 
 h3,
@@ -254,7 +256,7 @@ p {
 
 h1 {font-size: var(--title-size);}
 h2 {font-size: 2.5rem;}
-h3 {font-size: 1.3rem;}
+h3 {font-size: clamp(1rem, 1vw + 1rem, 1.4rem);}
 h4 {font-size: var(--section-title-size);}
 h5 {font-size: 1.313rem;}
 h6 {font-size: var(--overline-size);}
@@ -343,6 +345,10 @@ header ul {
   background-color: transparent;
 }
 
+header ul.mobile {
+  display: none;
+}
+
 header #logo {
   inline-size: 5rem;
   aspect-ratio: 1/1;
@@ -367,7 +373,7 @@ header ul .logo .btn {
   inline-size: 100%;
   border: none;
   text-transform: none;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 
@@ -483,7 +489,7 @@ footer form {
 footer form input {
   border-radius: 0;
   border: none;
-  inline-size: 100%;
+  /* inline-size: 100%; */
 }
 
 footer .copyright {
@@ -498,9 +504,75 @@ section {
   block-size: 90vh;
 }
 
-
-@media (max-width: 500px) {footer .container {
-  --gap: 2rem;
-    grid-template-columns: 1fr;
+@media (max-width: 900px) {
+  .container {
+    inline-size: 80vw;
   }
+  footer .container {
+    --gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen 
+    and (min-width: 1024px){
+
+}
+
+@media screen 
+    and (max-width: 1024px){
+
+}
+
+@media screen 
+    and (max-width: 480px){
+
+    /* gap */
+    .gap-md-sm {gap: .5rem}
+    .gap-md-1 {gap: 1rem}
+    .gap-md-2 {gap: 2rem}
+    .gap-md-3 {gap: 3rem}
+    
+    /* padding */
+    .pd-md-inline-sm {padding-inline: .5rem}
+    .pd-inline-1 {padding-inline: 1rem}
+    .pd-md-inline-2 {padding-inline: 2rem}
+    .pd-md-inline-3 {padding-inline: 3rem}
+
+    .pd-md-block-sm {padding-block: .5rem}
+    .pd-md-block-1 {padding-block: 1rem}
+    .pd-md-block-2 {padding-block: 2rem}
+    .pd-md-block-3 {padding-block: 3rem}
+
+    .pd-md-sm {padding: .5rem}
+    .pd-md-1 {padding: 1rem}
+    .pd-md-2 {padding: 2rem}
+    .pd-md-3 {padding: 3rem}
+
+    /* margin */
+    .mg-md-inline-sm {margin-inline: .5rem}
+    .mg-md-inline-1 {margin-inline: 1rem}
+    .mg-md-inline-2 {margin-inline: 2rem}
+    .mg-md-inline-3 {margin-inline: 3rem}
+
+    .mg-md-block-sm {margin-block: .5rem}
+    .mg-md-block-1 {margin-block: 1rem}
+    .mg-md-block-2 {margin-block: 2rem}
+    .mg-md-block-3 {margin-block: 3rem}
+
+
+    header ul.desktop {
+      display: none;
+    }
+    header ul.mobile {
+      display: flex;
+    }
+    header ul.mobile > li {
+      justify-self: center;
+    }
+
+    footer .container {
+        --gap: 2rem;
+        grid-template-columns: 1fr;
+    }
 }
