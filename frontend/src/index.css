@@ -95,16 +95,17 @@ select {
 
 :root {
   /* colors */
-  --primary-color: 180 100% 25%;
-  --secondary-color: 180 100% 10%;
-  --accent-color: 181 100% 34%;
-  --text-color: 180 20% 25%;
+  --primary-color: 206 100% 11%;
+  /* --primary-color: 180 100% 25%; */
+  --secondary-color: 195 100% 10%;
+  --accent-color: 190 100% 32%;
+  --text-color: 180 20% 20%;
   --white-color: 0 0% 100%;
   --black-color: 0 0% 0%;
 
   /* type */
   --title-size: 2.25rem;
-  --section-title-size: 1.35rem;
+  --section-title-size: clamp(1rem, 1vw + 1rem, 1.4rem);
   --body-size: 1rem;
   --overline-size: 0.75rem;
 
@@ -192,18 +193,49 @@ select {
 
 /* colors */
 /* backgrounds */
-.bg-primary {background-color: hsl(var(--primary-color) / var(--alpha));}
-.bg-secondary {background-color: hsl(var(--secondary-color) / var(--alpha));}
-.bg-accent {background-color: hsl(var(--accent-color) / var(--alpha));}
-.bg-white {background-color: hsl(var(--white-color) / var(--alpha));}
-.bg-black {background-color: hsl(var(--black-color) / var(--alpha));}
+.bg-primary {
+  --color: var(--white-color);
+  background-color: hsl(var(--primary-color) / var(--alpha));
+}
+.bg-secondary {
+  --color: var(--secondary-color);
+  background-color: hsl(var(--secondary-color) / var(--alpha));
+}
+.bg-accent {
+  --color: var(--accent-color);
+  background-color: hsl(var(--accent-color) / var(--alpha));
+}
+.bg-white {
+  --color: var(--white-color);
+  background-color: hsl(var(--white-color) / var(--alpha));
+}
+.bg-black {
+  --color: var(--black-color);
+  background-color: hsl(var(--black-color) / var(--alpha));
+}
 
 /* color */
-.txt-primary {color: hsl(var(--primary-color) / var(--alpha));}
-.txt-secondary {color: hsl(var(--secondary-color) / var(--alpha));}
-.txt-accent {color: hsl(var(--accent-color) / var(--alpha));}
-.txt-white {color: hsl(var(--white-color) / var(--alpha));}
-.txt-black {color: hsl(var(--black-color) / var(--alpha));}
+.txt-primary {
+    color: hsl(var(--primary-color) / var(--alpha));
+    --text-color: var(--primary-color);
+}
+.txt-secondary {
+    color: hsl(var(--secondary-color) / var(--alpha));
+    --text-color: var(--secondary-color);
+}
+.txt-accent {
+    color: hsl(var(--accent-color) / var(--alpha));
+    --text-color: var(--accent-color);
+}
+.txt-white {
+    color: hsl(var(--white-color) / var(--alpha));
+    --text-color: var(--white-color);
+}
+.txt-black {
+    color: hsl(var(--black-color) / var(--alpha));
+    --text-color: var(--black-color);
+}
+
 
 /* borders */
 .br-primary {border-color: hsl(var(--primary-color) / var(--alpha));}
@@ -252,16 +284,33 @@ h6,
 p {
   font-family: var(--body-font-family);
   color: var(--text-color);
+  line-height: 1.6;
 }
 
 h1 {font-size: var(--title-size);}
 h2 {font-size: 2.5rem;}
-h3 {font-size: clamp(1rem, 1vw + 1rem, 1.4rem);}
-h4 {font-size: var(--section-title-size);}
+h3 {font-size: var(--section-title-size);}
+h4 {font-size: calc(var(--section-title-size) - .25rem);}
 h5 {font-size: 1.313rem;}
 h6 {font-size: var(--overline-size);}
 p {font-size: var(--body-size);}
 
+/* main {
+  height: 100%;
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
+}
+main section{
+  scroll-snap-align: start;
+} */
+
+section {
+  --gap: 2rem;
+  margin: 2.5rem auto;
+  /* height: 100vh; */
+  align-content: center;
+  padding: 3rem 0;
+}
 
 /* button */
 button,
@@ -374,6 +423,7 @@ header ul .logo .btn {
   border: none;
   text-transform: none;
   font-weight: 700;
+  font-size: 1.25rem;
 }
 
 

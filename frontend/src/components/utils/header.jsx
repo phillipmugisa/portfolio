@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
@@ -24,34 +25,34 @@ const Header = () => {
         <header ref={headerRef}>
             <ul className="container grid desktop">
                 <li>
-                    <a href="" className="btn tab active">Home</a>
+                    <Link to="/" className="btn tab active">Home</Link>
                 </li>
                 <li>
-                    <a href="" className="btn tab">Projects</a>
+                    <Link to="/" className="btn tab">Projects</Link>
                 </li>
                 <li>
-                    <a href="" className="logo">
+                    <Link to="/" className="logo">
                         <div className="grid place-center logo">
                             <div id="logo"></div>
                             <p className="logo-name btn tab logo-link">mugisathedev</p>
                         </div>
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="" className="btn tab">Blog</a>
+                    <Link to="/" className="btn tab">Blog</Link>
                 </li>
                 <li>
-                    <a href="" className="btn tab bg-primary txt-white ">Hire Me</a>
+                    <Link to="/" className="btn hire tab bg-primary txt-white ">Hire Me</Link>
                 </li>
             </ul>
             <ul className="container grid mobile">
                 <li>
-                    <a href="" className="logo">
+                    <Link to="/" className="logo">
                         <div className="grid place-center logo">
                             <div id="logo"></div>
                             <p className="logo-name btn tab logo-link">mugisathedev</p>
                         </div>
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </header>

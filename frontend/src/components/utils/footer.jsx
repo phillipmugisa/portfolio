@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { 
     FaGithub, FaInstagram, FaLinkedinIn,
@@ -37,15 +38,15 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className="social-icons flex">
-                            <a href="" className="icon">
+                            <Link to="" className="icon">
                                 <FaGithub />
-                            </a>
-                            <a href="" className="icon">
+                            </Link>
+                            <Link to="" className="icon">
                                 <FaInstagram />
-                            </a>
-                            <a href="" className="icon">
+                            </Link>
+                            <Link to="" className="icon">
                                 <FaLinkedinIn />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -55,12 +56,12 @@ const Footer = () => {
                     </h5>
                     <div className="footer-part-body grid">
                         <div className="footer-part-links grid">
-                            <a href="" className="footer-part-link">Django (10)</a>
-                            <a href="" className="footer-part-link">Postgres (10)</a>
-                            <a href="" className="footer-part-link">React (10)</a>
-                            <a href="" className="footer-part-link">Figma (10)</a>
-                            <a href="" className="footer-part-link">Adobe (10)</a>
-                            <a href="" className="footer-part-link">Vanilla JavaScript (10)</a>
+                            <Link to="" className="footer-part-link">Django (10)</Link>
+                            <Link to="" className="footer-part-link">Postgres (10)</Link>
+                            <Link to="" className="footer-part-link">React (10)</Link>
+                            <Link to="" className="footer-part-link">Figma (10)</Link>
+                            <Link to="" className="footer-part-link">Adobe (10)</Link>
+                            <Link to="" className="footer-part-link">Vanilla JavaScript (10)</Link>
                         </div>
                     </div>
                 </div>
@@ -70,10 +71,10 @@ const Footer = () => {
                     </h5>
                     <div className="footer-part-body grid">
                         <div className="footer-part-links grid site-map">
-                            <a href="" className="footer-part-link">Home</a>
-                            <a href="" className="footer-part-link">Projects</a>
-                            <a href="" className="footer-part-link">Blog</a>
-                            <a href="" className="footer-part-link">Privacy Policy</a>
+                            <Link to="" className="footer-part-link">Home</Link>
+                            <Link to="" className="footer-part-link">Projects</Link>
+                            <Link to="" className="footer-part-link">Blog</Link>
+                            <Link to="" className="footer-part-link">Privacy Policy</Link>
                         </div>
                     </div>
                 </div>
@@ -85,7 +86,7 @@ const Footer = () => {
                         <p className="footer-part-intro">Get timely updates right in your inbox.</p>
                         <form action="">
                             <input type="email" name="" id="name_field" placeholder="Email..." />
-                            <input type="submit" value="Subscribe" className="btn bg-primary txt-white" />
+                            <input type="submit" value="Subscribe" className="btn bg-accent txt-white" />
                         </form>
                     </div>
                 </div>

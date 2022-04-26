@@ -26,17 +26,17 @@ const PageStarter = () => {
                 </div>
                 <div className="tags gap-sm flex">
                     <AppButton
-                        classes="br-primary txt-primary outlined tag roundbr"
+                        classes="br-secondary txt-secondary outlined tag roundbr"
                         text = 'UI/UX Design'
                         onClickUrl=''
                     />
                     <AppButton
-                        classes="br-primary txt-primary outlined tag roundbr"
+                        classes="br-secondary txt-secondary outlined tag roundbr"
                         text = 'Web Development'
                         onClickUrl=''
                     />
                     <AppButton
-                        classes="br-primary txt-primary outlined tag roundbr"
+                        classes="br-secondary txt-secondary outlined tag roundbr"
                         text = 'Mobile App Development'
                         onClickUrl=''
                     />
@@ -75,6 +75,7 @@ export default PageStarter;
 function TypeWriter({text1, text2, classes, speed}) {
 
     const typewriter = useRef(null);
+    // const [isInView, setIsInView] = useState(true);
     
     const runAnimations = () => {
         
@@ -113,40 +114,54 @@ function TypeWriter({text1, text2, classes, speed}) {
     };
 
     useEffect(() => {
-        // runAnimations();
+        runAnimations();
 
-        // scale out heading on scroll  
-        let lastScrollTop = 0;
-        window.addEventListener("scroll", function(){
-            let st = window.pageYOffset || document.documentElement.scrollTop;
-            // defaults for desktop 
-            let UpperLimitfontSize = "max(2.4rem, 4.5rem)";
-            let LowerLimitfontSize = "min(2.4rem, 4.5rem)";
+        // scale out heading on scroll
+        // let lastScrollTop = 0;
+        // window.addEventListener("scroll", function(){
+        //     let st = window.pageYOffset || document.documentElement.scrollTop;
+        //     // defaults for desktop 
+        //     // let UpperLimitfontSize = "max(2.4rem, 4rem)";
+        //     // let LowerLimitfontSize = "min(2.4rem, 4rem)";
 
-            if(window.innerWidth < 500)
-            {
-                // mobile
-                UpperLimitfontSize = "max(2.25rem, 2.8rem)";
-                LowerLimitfontSize = "min(2.25rem, 2.8rem)";
-            }
-            else if (window.innerWidth < 1024)
-            {
-                // tablets and smaller screens
-                UpperLimitfontSize = "max(2.4rem, 3.5rem)";
-                LowerLimitfontSize = "min(2.4rem, 3.5rem)";
-            }
+        //     // if(window.innerWidth < 500)
+        //     // {
+        //     //     // mobile
+        //     //     UpperLimitfontSize = "max(2.25rem, 2.8rem)";
+        //     //     LowerLimitfontSize = "min(2.25rem, 2.8rem)";
+        //     // }
+        //     // else if (window.innerWidth < 1024)
+        //     // {
+        //     //     // tablets and smaller screens
+        //     //     UpperLimitfontSize = "max(2.4rem, 3.5rem)";
+        //     //     LowerLimitfontSize = "min(2.4rem, 3.5rem)";
+        //     // }
 
-            if (st > lastScrollTop){
-                // downscroll code
-                // if element in DOM
-                typewriter.current.style.fontSize = LowerLimitfontSize;
-            } else {
-                // upscroll code
-                typewriter.current.style.fontSize = UpperLimitfontSize;
-            }
-
-            lastScrollTop = st <= 0 ? 0 : st;
-        }, false);
+        //     if (isInView) {
+        //         // if (st > lastScrollTop){
+        //         //     // downscroll code
+        //         //     // if element in DOM
+        //         //     typewriter.current.style.fontSize = LowerLimitfontSize;
+        //         // } else {
+        //         //     // upscroll code
+        //         //     typewriter.current.style.fontSize = UpperLimitfontSize;
+        //         // }                
+        //     }
+            
+        //     lastScrollTop = st <= 0 ? 0 : st;
+        // }, false);
+        // const observer = new IntersectionObserver((entries, observer) => {
+        //     entries.forEach((entry) => {
+        //         if (entry.isIntersecting) {
+        //             setIsInView(true)
+        //         }
+        //         else
+        //         {
+        //             setIsInView(false)
+        //         }
+        //     })
+        // })
+        // observer.observe(typewriter.current);
 
     }, [])
 
