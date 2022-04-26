@@ -595,6 +595,10 @@ section {
 @media screen 
     and (max-width: 1024px){
 
+      footer .container {
+        --gap: 1rem;
+    }
+
 }
 
 @media screen 
@@ -645,7 +649,6 @@ section {
     }
 
     footer .container {
-        --gap: 2rem;
         grid-template-columns: 1fr;
     }
 

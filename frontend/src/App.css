@@ -723,6 +723,11 @@ input:checked + .slider:before {
         padding: 1rem 2rem;
         --gap: 6rem;
     }
+
+    /* news */
+    .news-body {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media screen 
