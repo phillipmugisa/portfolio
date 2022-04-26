@@ -203,7 +203,7 @@ header ul .logo:hover .btn {
     --typewriterCharacters: 0;
     position: relative;
     /* width: max-content; */
-    font-size: clamp(2rem, 3vw + 2rem, 4rem);
+    font-size: clamp(2rem, calc(3vw + 2rem), 4rem);
     /* font-family: monospace; */
     transition: all 0.3s ease-in-out;
 }
@@ -599,7 +599,7 @@ input:checked + .slider:before {
 }
 
 .project-tags > * {
-    font-size: clamp(.85rem, 2vw + 1rem, .9rem);
+    font-size: clamp(.85rem, calc(2vw + 1rem), .9rem);
 }
 
 .project-card .cta{
