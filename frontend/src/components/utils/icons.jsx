@@ -8,6 +8,8 @@ import {
     SiJavascript, SiPython
 } from "react-icons/si";
 
+import { FaShareAlt, FaHeart, FaComment } from "react-icons/fa";
+
 const icons = {
     
     MySql : <SiMysql />, 
@@ -27,7 +29,12 @@ const icons = {
     React : <SiReact />,
     
     Javascript : <SiJavascript />, 
-    Python : <SiPython />
+    Python : <SiPython />,
+
+    
+    Share : <FaShareAlt />,
+    Heart : <FaHeart />,
+    Comment : <FaComment />
 }
 
 export default icons;

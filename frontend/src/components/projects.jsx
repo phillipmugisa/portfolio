@@ -8,8 +8,8 @@ const Projects = () => {
         <section className="projects container grid">
             <SectionHeading headingText={"Projects"} classes="txt-secondary"/>
             <div className="projects-body grid">
-                <ProjectCard  />
-                <ProjectCard  />
+                <ProjectCard ProjectId={1}/>
+                <ProjectCard ProjectId={1} />
             </div>
         </section>
     );

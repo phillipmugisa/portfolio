@@ -428,6 +428,12 @@ input:checked + .slider:before {
 }
 
 /* section heading */
+.section-heading-wrapper {
+    --gap: .5rem;
+    justify-content: center;
+    text-align: center;
+}
+
 .section-heading {
     text-transform: uppercase;
     justify-self: center;
@@ -448,6 +454,10 @@ input:checked + .slider:before {
 
 .section-heading::before {
   align-self: center;
+}
+
+.section-sub-heading {
+    font-size: .9rem;
 }
 
 /* about */
@@ -599,11 +609,79 @@ input:checked + .slider:before {
 }
 
 .project-tags > * {
-    font-size: clamp(.85rem, calc(2vw + 1rem), .9rem);
+    font-size: clamp(.9rem, calc(2vw + 1rem), 1rem);
 }
 
 .project-card .cta{
     padding: .5rem 1.5rem;
+}
+
+/* blog */
+.blogs-body {
+    --gap: 0 1rem;
+}
+.blog-card {
+    border: 1px solid hsl(var(--secondary-color) / .5);
+    padding: 1.5rem 1.5rem;
+    --gap: .5rem;
+    border-radius: 1rem;
+}
+
+.blog-card-reaction {
+    color: hsl(var(--secondary-color) / var(--alpha));
+    font-size: 1.5rem;
+    --gap: 2rem;
+}
+
+.blog-card-reaction > * {
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.blog-card-reaction > *:hover,
+.blog-card-reaction > *:active {
+    color: hsl(var(--accent-color) / var(--alpha));
+}
+
+/* news */
+.news {
+    overflow: hidden;
+}
+
+.news-body {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.news-card {
+    --gap: .5rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+
+    background-color: hsl(var(--secondary-color) / 1);
+}
+
+
+.news-description {
+    font-size: .9rem;
+    font-weight: normal;
+    color: hsl(0, 0%, 90%);
+}
+
+.news-category {
+    list-style-position: inside;
+    font-size: .8rem;
+    color: rgb(170, 170, 170);
+
+    flex-wrap: wrap;
+}
+
+.news-category > * {
+    transition: all .2s ease-in-out;
+}
+
+.news-category > *:hover {
+    cursor: pointer;
+    color: rgb(205, 205, 205)
 }
 
 @media screen 
@@ -681,8 +759,7 @@ input:checked + .slider:before {
         grid-template-columns: 1fr;
     }
 
-    /* project cards */
-    
+    /* project cards */    
 
     .project-card {
         grid-template-columns: 1fr;
@@ -712,6 +789,11 @@ input:checked + .slider:before {
     .project-card-details {
         padding: 1rem 1rem 2rem;
         --gap: 1rem;
+    }
+
+    /* blogs */
+    .news-body {
+        grid-template-columns: 1fr;
     }
     
 }
