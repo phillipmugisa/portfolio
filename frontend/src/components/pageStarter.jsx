@@ -114,7 +114,7 @@ function TypeWriter({text1, text2, classes, speed}) {
     };
 
     useEffect(() => {
-        runAnimations();
+        // runAnimations();
 
         // scale out heading on scroll
         // let lastScrollTop = 0;
@@ -167,7 +167,7 @@ function TypeWriter({text1, text2, classes, speed}) {
 
     return (
         <h3 className={`typewriter ${classes}`} ref={typewriter}>
-            {text2}
+            Full Stack Web Developor
         </h3>
     );
 }
