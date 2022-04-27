@@ -78,7 +78,7 @@ function TypeWriter({text1, text2, classes, speed}) {
     // const [isInView, setIsInView] = useState(true);
     
     const runAnimations = () => {
-        
+        /*
         // let styles = getComputedStyle(typewriter.current);
         // let typewriterSpeed = styles.getPropertyValue('--typewriterSpeed');
         // let typewriterCharacters = styles.getPropertyValue('--typewriterCharacters');
@@ -108,13 +108,14 @@ function TypeWriter({text1, text2, classes, speed}) {
                         }
                     })
 
-                }, 1000)
+                }, 1000);
             }
         })
+        */
     };
 
     useEffect(() => {
-        // runAnimations();
+        runAnimations();
 
         // scale out heading on scroll
         // let lastScrollTop = 0;
