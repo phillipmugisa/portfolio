@@ -8,7 +8,7 @@ const Header = () => {
     useEffect(() => {
 
         window.addEventListener("scroll", function(){ 
-            if  (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+            if  (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 headerRef.current.classList.add('elevated')
             }
             else
