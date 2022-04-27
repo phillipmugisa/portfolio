@@ -117,12 +117,17 @@ header.elevated {
 }
 
 header #logo {
-    transition: .2s ease-in-out;
+    /* transition: .2s ease-in-out; */
 }
 
 header.elevated #logo{
-    transform: scale(0);
-    inline-size: 0;
+    animation: hideLogo .2s ease-in-out;
+}
+
+@keyframes hideLogo {
+    to {
+        transform: scale(0);
+    }
 }
 
 header .btn {
