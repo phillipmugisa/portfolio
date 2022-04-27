@@ -281,6 +281,10 @@ header ul .logo:hover .btn {
     }
 }
 
+.page-starter .page-starter-text {
+    --gap: 0;
+}
+
 .page-starter .page-heading {
     text-transform: uppercase;
     color: hsl(var(--secondary-color) / .5);
