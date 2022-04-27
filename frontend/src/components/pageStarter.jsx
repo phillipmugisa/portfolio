@@ -166,9 +166,9 @@ function TypeWriter({text1, text2, classes, speed}) {
     }, [])
 
     return (
-        <h1 className={`typewriter ${classes}`} ref={typewriter}>
+        <h3 className={`typewriter ${classes}`} ref={typewriter}>
             {text2}
-        </h1>
+        </h3>
     );
 }
 
