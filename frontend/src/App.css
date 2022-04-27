@@ -210,7 +210,6 @@ header ul .logo:hover .btn {
     --typewriterCharacters: 0;
     position: relative;
     /* width: max-content; */
-    font-size: 1.5rem;
     color: hsl(var(--secondary-color) / .5);
     /* font-family: monospace; */
     transition: all 0.3s ease-in-out;
@@ -702,7 +701,7 @@ input:checked + .slider:before {
     and (max-width: 1024px){
 
     .typewriter {
-        font-size: max(2.4rem, 3.25rem);
+        /* font-size: max(2.4rem, 3.25rem); */
     }
 
     .about .img-wrapper {
@@ -751,7 +750,7 @@ input:checked + .slider:before {
     }
 
     .typewriter {
-        font-size: max(2.25rem, 2.5rem);
+        /* font-size: max(2.25rem, 2.5rem); */
     }
 
     .tags{
