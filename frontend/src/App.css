@@ -118,10 +118,11 @@ header.elevated {
 
 header #logo {
     /* transition: .2s ease-in-out; */
+    transform: scale(1);
 }
 
 header.elevated #logo{
-    /* animation: hideLogo .2s ease-in-out; */
+    animation: hideLogo .2s ease-in-out;
 }
 
 @keyframes hideLogo {
