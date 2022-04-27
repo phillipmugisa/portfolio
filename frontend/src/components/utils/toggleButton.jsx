@@ -29,7 +29,7 @@ const ToggleButton = ({defaultOn, defaultOff, onChange}) => {
     }
 
     return (
-        <div className={`toggle-switch grid`}>
+        <div className={`toggle-switch flex`}>
             <label
                 className={`toggle-switch-options ${!switchState ? 'active' : ''}`}
                 onClick={() => handleChange(false)}

@@ -22,7 +22,7 @@ const ProjectCard = ({ProjectId}) => {
                 <div className="project-card-details grid">
                     <h4 className="project-title txt-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h4>
                     <p className="project-description">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. A molestiae suscipit optio in? Aspernatur quis magnam repudiandae excepturi sunt consectetur provident quasi temporibus modi architecto deserunt eveniet doloremque magni, minus veritatis modi architecto deserunt eveniet doloremque magni, minus veritatis
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. A molestiae suscipit optio in? Aspernatur quis magnam repudiandae excepturi sunt consectetur provident quasi temporibus modi architecto deserunt eveniet doloremque magni, minus veritatis modi architecto
                     </p>
                     <div className="project-tags flex">
                     <AppButton

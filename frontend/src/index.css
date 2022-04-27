@@ -317,7 +317,7 @@ button,
 .btn {
   display: grid;
   place-items: center;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.5rem;
   outline: none;
   cursor: pointer;
   text-transform: capitalize;
@@ -378,6 +378,7 @@ input:focus {
 header {
   padding: 0;
   overflow: hidden;
+  position: relative;
 }
 
 header * {
@@ -387,9 +388,9 @@ header * {
 header ul {
   list-style: none;
   list-style-position: outside;
-  grid-template-columns: .5fr .5fr 1fr .5fr .5fr;
+  grid-template-columns: repeat(5, auto);
   justify-content: space-evenly;
-  /* align-items: center; */
+  align-items: center;
   color:hsl(var(--text-color) / 1);
   background-color: transparent;
 }
@@ -419,13 +420,168 @@ header ul .logo {
 }
 
 header ul .logo .btn {
-  inline-size: 100%;
+  /* inline-size: 100%; */
   border: none;
   text-transform: none;
   font-weight: 700;
-  font-size: 1.25rem;
 }
 
+header ul .btn {
+  padding: .5rem 1.5rem;
+}
+
+header ul .btn.hire {
+  border-radius: 50px;
+}
+
+/* mobile header */
+header ul.mobile {
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 .5rem;
+}
+
+header ul.mobile .md-tabs {
+  padding: .5rem 1rem;
+  block-size: 100%;
+  font-size: 1rem;
+}
+
+header ul.mobile .md-tabs:not(.logo) {
+  color:hsl(var(--primary-color) / .7);
+  transition: all 0.2s ease-in-out;
+}
+
+header ul.mobile .md-tabs:not(.logo):hover,
+header ul.mobile .md-tabs:not(.logo):active {
+  color:hsl(var(--primary-color) / 1);
+}
+
+.mobile-settings,
+.mobile-menu-tabs {
+  position: fixed;
+  background : rgba(255, 255, 255, 0.98);
+  box-shadow : 0 1px 3px rgba(0, 0, 0, 0.205);
+  inline-size: 0;
+  border-radius: 0 0 .5rem;
+  justify-content: center;
+  align-content: center;
+  --gap: 1rem;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.mobile-menu-tabs {
+  bottom: -1;
+  left: 0;
+  block-size: 100%;
+}
+
+.mobile-menu-tabs.inView {
+  inline-size: 100%;
+}
+
+.mobile-menu-tabs .menu-tabs {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  justify-content: center;
+  color:hsl(var(--primary-color) / .7);
+  font-weight: 600;
+}
+
+.mobile-menu-tabs .menu-tabs.active {
+  color:hsl(var(--primary-color) / 1);
+  font-weight: 700;
+}
+
+.mobile-menu-tabs .menu-tabs:not(.hire):hover,
+.mobile-menu-tabs .menu-tabs:not(.hire):active {
+  color:hsl(var(--primary-color) / 1);
+  font-weight: 500;
+}
+
+.mobile-menu-tabs .menu-tabs.hire {
+  border-radius: 30px;
+  color: white;
+}
+
+.mobile-settings {
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%) scale(0);
+  inline-size: 90vw;
+  align-content: flex-start;
+  justify-content: center;
+  --gap: 1rem;
+  padding: 1.5rem 3rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.mobile-settings.inView {
+  transform: translate(50%, 50%) scale(1);
+}
+
+.mobile-settings .settings-item form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.mobile-settings .settings-item form label {
+  font-weight: 600;
+}
+
+.mobile-settings .settings-item select {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.mobile-settings .settings-item select option {
+  font-size: 1rem;
+}
+
+.mobile-settings .settings-cta {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.mobile-settings .settings-cta > *{
+  min-inline-size: 100% !important;
+}
+
+/* scroll to top */
+.toTop {
+  position: fixed;
+  bottom: -5rem;
+  right: -5rem;
+  aspect-ratio: 1/1;
+  inline-size: 3rem;
+  /* overflow: hidden; */
+  justify-content: center;
+  align-content: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.toTop.inView {
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.toTop > * {
+  /* aspect-ratio: 1/1; */
+  inline-size: 100%;
+  block-size: 100%;
+  padding: 1rem;
+  align-self: center;
+  border-radius: 50%;
+}
+
+.toTop .infooter {
+  background: white;
+  color: hsl(var(--secondary-color) / 1);
+}
 
 /* footer */
 
@@ -538,8 +694,15 @@ footer form {
 
 footer form input {
   border-radius: 0;
-  border: none;
-  /* inline-size: 100%; */
+}
+
+footer form input[type="submit"] {
+  border-radius: 50px;
+}
+
+footer form input[type="email"] {
+  padding: .75rem 1rem;
+  border-radius: 5px;
 }
 
 footer .copyright {
@@ -558,12 +721,12 @@ section {
 .horizontal-scroll {
   padding: .5rem 0;
   grid-auto-flow: column;
-  grid-auto-columns: 36%;
+  grid-auto-columns: 29%;
   --gap: 0 1rem;
   overflow-x: scroll;
   overscroll-behavior-inline: contain;
 
-  scroll-snap-type: inline mandatory;
+  scroll-snap-type: inline proximity;
   scroll-padding-inline: 2rem;
 }
 
@@ -577,26 +740,18 @@ section {
   scroll-snap-align: start;
 }
 
-@media (max-width: 900px) {
-  .container {
-    inline-size: 80vw;
-  }
-  footer .container {
-    --gap: 2rem;
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media screen 
-    and (min-width: 1024px){
-
-}
 
 @media screen 
     and (max-width: 1024px){
 
       footer .container {
         --gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+      }
+
+    /* horizontal scroll */
+    .horizontal-scroll {
+      grid-auto-columns: 36%;
     }
 
 }
@@ -612,7 +767,7 @@ section {
     
     /* padding */
     .pd-md-inline-sm {padding-inline: .5rem}
-    .pd-inline-1 {padding-inline: 1rem}
+    .pd-md-inline-1 {padding-inline: 1rem}
     .pd-md-inline-2 {padding-inline: 2rem}
     .pd-md-inline-3 {padding-inline: 3rem}
 
@@ -655,6 +810,6 @@ section {
 
     /* horizontal scroll */
     .horizontal-scroll {
-      grid-auto-columns: 79%;
+      grid-auto-columns: 83%;
     }
 }

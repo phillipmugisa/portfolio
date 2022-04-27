@@ -1,100 +1,142 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { 
     FaGithub, FaInstagram, FaLinkedinIn,
-    FaPhoneAlt, FaMapMarkedAlt,
+    FaPhoneAlt, FaMapMarkedAlt, FaArrowUp
 } from "react-icons/fa";
+
+import AppButton from './appButton';
 
 import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
+
+    const toTopElem = useRef(null);
+
+    useEffect(() => {
+        window.addEventListener("scroll", function() {
+            if  (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                toTopElem.current.classList.add('inView')
+            }
+            else
+            {
+                if (toTopElem.current.classList.contains('inView'))
+                {
+                    toTopElem.current.classList.remove('inView')
+                }
+            }
+
+            if  ((document.body.offsetHeight - document.body.scrollTop) <= 1200 || (document.body.offsetHeight - document.documentElement.scrollTop) <= 1200) {
+                toTopElem.current.childNodes[0].classList.add('infooter')
+                
+            }
+            else
+            {
+                if (toTopElem.current.childNodes[0].classList.contains('infooter'))
+                {
+                    toTopElem.current.childNodes[0].classList.remove('infooter')
+                }
+            }
+        });
+    }, [])
+
     return (
-        <footer className="grid bg-secondary">
-            <div className="container grid">
-                <div className="footer-part grid">
-                    <h5 className="footer-part-heading">
-                        Contact us
-                    </h5>
-                    <div className="footer-part-body grid">
-                        <div className="contact-infor grid">
-                            <div className="contact-item flex">
-                                <span className="icon">
-                                    <FaPhoneAlt />
-                                </span>
-                                <p>+256 782 047 612</p>
-                            </div>
-                            <div className="contact-item flex">
-                                <span className="icon">
-                                    <MdEmail />
-                                </span>
-                                <p>phillipmugisa4@gmail.com</p>
-                            </div>
-                            <div className="contact-item flex">
-                                <span className="icon">
-                                    <FaMapMarkedAlt />
-                                </span>
-                                <p>Kampala, Uganda</p>
-                            </div>
-                        </div>
-                        <div className="social-icons flex">
-                            <Link to="" className="icon">
-                                <FaGithub />
-                            </Link>
-                            <Link to="" className="icon">
-                                <FaInstagram />
-                            </Link>
-                            <Link to="" className="icon">
-                                <FaLinkedinIn />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-                <div className="footer-part grid">
-                    <h5 className="footer-part-heading">
-                        Related Links
-                    </h5>
-                    <div className="footer-part-body grid">
-                        <div className="footer-part-links grid">
-                            <Link to="" className="footer-part-link">Django (10)</Link>
-                            <Link to="" className="footer-part-link">Postgres (10)</Link>
-                            <Link to="" className="footer-part-link">React (10)</Link>
-                            <Link to="" className="footer-part-link">Figma (10)</Link>
-                            <Link to="" className="footer-part-link">Adobe (10)</Link>
-                            <Link to="" className="footer-part-link">Vanilla JavaScript (10)</Link>
-                        </div>
-                    </div>
-                </div>
-                <div className="footer-part grid">
-                    <h5 className="footer-part-heading">
-                        Site Map
-                    </h5>
-                    <div className="footer-part-body grid">
-                        <div className="footer-part-links grid site-map">
-                            <Link to="" className="footer-part-link">Home</Link>
-                            <Link to="" className="footer-part-link">Projects</Link>
-                            <Link to="" className="footer-part-link">Blog</Link>
-                            <Link to="" className="footer-part-link">Privacy Policy</Link>
-                        </div>
-                    </div>
-                </div>
-                <div className="footer-part grid newsletter">
-                    <h5 className="footer-part-heading">
-                        Newsletter
-                    </h5>
-                    <div className="footer-part-body grid">
-                        <p className="footer-part-intro">Get timely updates right in your inbox.</p>
-                        <form action="">
-                            <input type="email" name="" id="name_field" placeholder="Email..." />
-                            <input type="submit" value="Subscribe" className="btn bg-accent txt-white" />
-                        </form>
-                    </div>
-                </div>
+        <>
+            <div className="toTop grid" ref={toTopElem} onClick={() => window.scrollTo({top:0, behavior: 'smooth'})}>                
+                <AppButton
+                    classes="bg-secondary txt-white"
+                    onClickUrl=''
+                >
+                    <FaArrowUp />
+                </AppButton>
             </div>
-            <p className="copyright">
-                <span>Copyright &copy; {(new Date().getFullYear())}, All rights reserved. Property of mugisathedev.net</span>
-            </p>
-        </footer>
+            <footer className="grid bg-secondary">
+                <div className="container grid">
+                    <div className="footer-part grid">
+                        <h5 className="footer-part-heading">
+                            Contact us
+                        </h5>
+                        <div className="footer-part-body grid">
+                            <div className="contact-infor grid">
+                                <div className="contact-item flex">
+                                    <span className="icon">
+                                        <FaPhoneAlt />
+                                    </span>
+                                    <p>+256 782 047 612</p>
+                                </div>
+                                <div className="contact-item flex">
+                                    <span className="icon">
+                                        <MdEmail />
+                                    </span>
+                                    <p>phillipmugisa4@gmail.com</p>
+                                </div>
+                                <div className="contact-item flex">
+                                    <span className="icon">
+                                        <FaMapMarkedAlt />
+                                    </span>
+                                    <p>Kampala, Uganda</p>
+                                </div>
+                            </div>
+                            <div className="social-icons flex">
+                                <Link to="" className="icon">
+                                    <FaGithub />
+                                </Link>
+                                <Link to="" className="icon">
+                                    <FaInstagram />
+                                </Link>
+                                <Link to="" className="icon">
+                                    <FaLinkedinIn />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="footer-part grid">
+                        <h5 className="footer-part-heading">
+                            Related Links
+                        </h5>
+                        <div className="footer-part-body grid">
+                            <div className="footer-part-links grid">
+                                <Link to="" className="footer-part-link">Django (10)</Link>
+                                <Link to="" className="footer-part-link">Postgres (10)</Link>
+                                <Link to="" className="footer-part-link">React (10)</Link>
+                                <Link to="" className="footer-part-link">Figma (10)</Link>
+                                <Link to="" className="footer-part-link">Adobe (10)</Link>
+                                <Link to="" className="footer-part-link">Vanilla JavaScript (10)</Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="footer-part grid">
+                        <h5 className="footer-part-heading">
+                            Site Map
+                        </h5>
+                        <div className="footer-part-body grid">
+                            <div className="footer-part-links grid site-map">
+                                <Link to="" className="footer-part-link">Home</Link>
+                                <Link to="" className="footer-part-link">Projects</Link>
+                                <Link to="" className="footer-part-link">Blog</Link>
+                                <Link to="" className="footer-part-link">Privacy Policy</Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="footer-part grid newsletter">
+                        <h5 className="footer-part-heading">
+                            Newsletter
+                        </h5>
+                        <div className="footer-part-body grid">
+                            <p className="footer-part-intro">Get timely updates right in your inbox.</p>
+                            <form action="">
+                                <input type="email" name="" id="name_field" placeholder="Email..." />
+                                <input type="submit" value="Subscribe" className="btn bg-accent txt-white"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <p className="copyright">
+                    <span>Copyright &copy; {(new Date().getFullYear())}, All rights reserved. Property of mugisathedev.net</span>
+                </p>
+            </footer>
+        </>
     );
 }
  

@@ -14,7 +14,7 @@ const StacksUsed = () => {
                     <div className="stack-category-icons grid">
                         <StackIcon classes="txt-white" name="Html5" icon={icons.Html5}/>
                         <StackIcon classes="txt-white" name="Css3" icon={icons.Css3}/>
-                        <StackIcon classes="txt-white" name="ReactJs" icon={icons.ReactJs}/>
+                        <StackIcon classes="txt-white" name="ReactJs" icon={icons.React}/>
                         <StackIcon classes="txt-white" name="Javascript" icon={icons.Javascript}/>
                         <StackIcon classes="txt-white" name="Flutter" icon={icons.Flutter}/>
                     </div>

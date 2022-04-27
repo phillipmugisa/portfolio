@@ -12,9 +12,9 @@ const PageStarter = () => {
     }
 
     return (
-        <section className="page-starter container grid mg-block-2 gap-3 gap-md-3">
-            <div className="left gap-1 mg-block-1">
-                <div className="page-starter-text grid gap-sm">                
+        <section className="page-starter container grid gap-1 mg-block-3">
+            <div className="left grid gap-sm gap-md-1 mg-block-2">
+                <div className="page-starter-text grid">                
                     {/* <h1 className="page-heading">I am Mugisa Phillip</h1> */}
                     <TypeWriter
                         text1="I am Mugisa Phillip"
@@ -78,7 +78,6 @@ function TypeWriter({text1, text2, classes, speed}) {
     // const [isInView, setIsInView] = useState(true);
     
     const runAnimations = () => {
-        /*
         // let styles = getComputedStyle(typewriter.current);
         // let typewriterSpeed = styles.getPropertyValue('--typewriterSpeed');
         // let typewriterCharacters = styles.getPropertyValue('--typewriterCharacters');
@@ -111,7 +110,8 @@ function TypeWriter({text1, text2, classes, speed}) {
                 }, 1000);
             }
         })
-        */
+
+        
     };
 
     useEffect(() => {
@@ -168,7 +168,7 @@ function TypeWriter({text1, text2, classes, speed}) {
 
     return (
         <h4 className={`typewriter ${classes}`} ref={typewriter}>
-            Full Stack Web Developor
+            {/* Full Stack Web Developor */}
         </h4>
     );
 }
