@@ -167,9 +167,9 @@ function TypeWriter({text1, text2, classes, speed}) {
     }, [])
 
     return (
-        <h3 className={`typewriter ${classes}`} ref={typewriter}>
+        <h4 className={`typewriter ${classes}`} ref={typewriter}>
             Full Stack Web Developor
-        </h3>
+        </h4>
     );
 }
 
