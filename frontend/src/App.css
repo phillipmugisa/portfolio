@@ -283,13 +283,13 @@ header ul .logo:hover .btn {
 
 .page-starter .page-heading {
     text-transform: uppercase;
-    color: hsl(var(--primary-color) / var(--alpha));
+    color: hsl(var(--secondary-color) / var(--alpha));
 }
 
 .page-starter .page-sub-heading {
     text-transform: capitalize;
-    color: hsl(var(--text-color) / var(--alpha));
-    font-weight: 400;
+    color: hsl(var(--primary-color) / var(--alpha));
+    /* font-weight: 400; */
     font-size: clamp(2rem, calc(3vw + 2rem), 4rem);
 }
 
