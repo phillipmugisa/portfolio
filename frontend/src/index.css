@@ -655,6 +655,6 @@ section {
 
     /* horizontal scroll */
     .horizontal-scroll {
-      grid-auto-columns: 84%;
+      grid-auto-columns: 77%;
     }
 }
