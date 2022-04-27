@@ -9,7 +9,7 @@ const Header = () => {
 
         window.addEventListener("scroll", function(){ 
             var st = window.pageYOffset || document.documentElement.scrollTop;
-            if (st > 10){
+            if (st > 5){
                 headerRef.current.classList.add('elevated')
             }
             else
