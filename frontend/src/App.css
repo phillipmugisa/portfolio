@@ -210,7 +210,7 @@ header ul .logo:hover .btn {
     --typewriterCharacters: 0;
     position: relative;
     /* width: max-content; */
-    color: hsl(var(--text-color) / .5);
+    color: hsl(var(--text-color) / 0);
     /* font-family: monospace; */
     transition: all 0.3s ease-in-out;
 }
