@@ -226,13 +226,13 @@ header ul .logo:hover .btn {
 }
 
 .typewriter::before {
-    background: rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 0);
     display: inline-block;
 }
 
 .typewriter::after {
     width: 0.1em;
-    background: hsl(var(--primary-color) / .5);
+    background: hsl(var(--primary-color) / 0);
 }
 
 .typewriter.type::before {
