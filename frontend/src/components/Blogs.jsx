@@ -5,7 +5,7 @@ import SectionHeading  from './utils/sectionHeading';
 
 const Blogs = () => {
     return (
-        <section className="blogs container grid">
+        <section className="blogs container-fluid grid">
             <SectionHeading headingText={"Blog Articles"} classes="txt-secondary"/>
             <div className="blogs-body horizontal-scroll grid">
                 <BlogCard blogId = {1}/>
