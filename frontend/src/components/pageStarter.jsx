@@ -13,7 +13,7 @@ const PageStarter = () => {
 
     return (
         <section className="page-starter container grid mg-block-2 gap-3 gap-md-3">
-            <div className="left mg-block-1">
+            <div className="left gap-1 mg-block-1">
                 <div className="page-starter-text grid gap-md-1">                
                     {/* <h1 className="page-heading">I am Mugisa Phillip</h1> */}
                     <TypeWriter
