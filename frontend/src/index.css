@@ -563,8 +563,8 @@ section {
   overflow-x: scroll;
   overscroll-behavior-inline: contain;
 
-  scroll-snap-type: inline proximity;
-  scroll-padding-inline: 4rem;
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: 2rem;
 }
 
 .horizontal-scroll::-webkit-scrollbar {
