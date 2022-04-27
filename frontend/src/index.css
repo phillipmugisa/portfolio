@@ -486,7 +486,7 @@ header ul.mobile .md-tabs:not(.logo):active {
   font-size: 1.2rem;
   justify-content: center;
   color:hsl(var(--primary-color) / .7);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .mobile-menu-tabs .menu-tabs.active {
@@ -527,6 +527,7 @@ header ul.mobile .md-tabs:not(.logo):active {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  font-family: var(--body-font-family);
 }
 
 .mobile-settings .settings-item form label {
