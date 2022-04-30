@@ -2,7 +2,7 @@
 import React from 'react'
 
 // router
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 // components
 import TestImg from '../components/utils/test2.png';

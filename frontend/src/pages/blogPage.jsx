@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React from "react";
 
 import Blogs from '../components/Blogs';
 
@@ -16,7 +16,7 @@ const BlogPage = () => {
 
     return (
         <>
-            <Blogs url={url} isHorizontal={false} />
+            <Blogs url={""} isHorizontal={false} />
         </>
     );
 }
