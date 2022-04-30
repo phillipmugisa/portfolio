@@ -148,7 +148,7 @@ for idx, story in enumerate(news):
 
 const SingleBlogPage = () => {
 
-    const { slug, id } = useParams();
+    // const { slug, id } = useParams();
 
     const [ snippetOpen, setSnippetOpen ] = useState(false);
 

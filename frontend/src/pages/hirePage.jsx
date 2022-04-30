@@ -8,8 +8,8 @@ import React, { useRef, useState, useLayoutEffect } from  'react';
 const HirePage = () => {
 
     const formElem = useRef(null);
-    const [ selectedCategories, setSelectedCategories ] = useState([]);
-    const [ selectedStacks, setSelectedStacks ] = useState([]);
+    // const [ selectedCategories, setSelectedCategories ] = useState([]);
+    // const [ selectedStacks, setSelectedStacks ] = useState([]);
 
     const showTags = (e) => {
         e.preventDefault();

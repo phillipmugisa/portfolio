@@ -11,7 +11,7 @@ import { AppContext } from '../hooks/AppContext';
 
 const Blogs = (props) => {
 
-    const url = props.url;
+    // const url = props.url;
     const blogBodyIsHorizontal = props.isHorizontal;
 
     const location = useLocation();

@@ -6,14 +6,13 @@ import { useParams } from 'react-router-dom';
 
 // components
 import TestImg from '../components/utils/test2.png';
-import icons from '../components/utils/icons';
 import AppButton from '../components/utils/appButton';
 import { MinProjectCard } from '../components/utils/projectCards';
 import SectionHeading from '../components/utils/sectionHeading';
 
 const SingleProjectPage = () => {
 
-    const { slug, id } = useParams();
+    // const { slug, id } = useParams();
 
     return (
         <React.Fragment>
