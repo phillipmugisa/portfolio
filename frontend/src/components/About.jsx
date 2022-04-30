@@ -3,7 +3,7 @@ import SectionHeading from './utils/sectionHeading';
 
 const About = () => {
     return (
-        <section className="about container-fuild grid bg-primary">
+        <section className="about container-fuild grid bg-primary pd-block-3">
             <SectionHeading headingText={"Who is mugisa?"} classes="txt-white"/>
             <div className="about-body container grid">
                 <div className="img-wrapper">

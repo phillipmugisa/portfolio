@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { NavLink } from "react-router-dom";
 
 import { FaBars, FaCog } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
@@ -7,15 +7,54 @@ import { MdClose } from "react-icons/md";
 import ToggleButton from './toggleButton';
 import AppButton from './appButton';
 
+import { AppContext } from '../../hooks/AppContext';
+
 const Header = () => {
 
     const headerRef = useRef();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [settingIsOpen, setSettingIsOpen] = useState(false);
+    
+    const bodyElem = document.querySelector('body');
+
+    const {appRoutes} = useContext(AppContext);
 
     const handleToggleSwitchChange = (onState) => {
         // redirect basing on state
         // console.log(onState)
+    }
+
+    const toggleBodyScrollability = () => {
+        if (bodyElem.classList.contains("on-scroll"))
+        {
+            bodyElem.classList.remove("on-scroll")
+        }
+        else
+        {
+            bodyElem.classList.add("on-scroll")
+        }
+    }
+
+    const openMobileNav = () => {
+        toggleBodyScrollability();
+        setMobileMenuOpen(state => !state);
+    }
+
+    const openSettingMobal = () => {
+        const mainElem = document.querySelector('.main-section');
+
+        
+        if (mainElem.classList.contains("fade"))
+        {
+            mainElem.classList.remove("fade")
+        }
+        else
+        {
+            mainElem.classList.add("fade")
+        }
+
+        toggleBodyScrollability();
+        setSettingIsOpen(state => !state);
     }
 
     useEffect(() => {
@@ -37,71 +76,71 @@ const Header = () => {
         <header ref={headerRef}>
             <ul className="container grid desktop">
                 <li>
-                    <Link to="/" className="btn tab active">Home</Link>
+                    <NavLink to={appRoutes.home} className={`btn tab`}>Home</NavLink>
                 </li>
                 <li>
-                    <Link to="/" className="btn tab">Projects</Link>
+                    <NavLink to={appRoutes.projects} className={`btn tab`}>Projects</NavLink>
                 </li>
                 <li>
-                    <Link to="/" className="logo">
+                    <NavLink to={appRoutes.home} className="logo">
                         <div className="grid place-center logo">
                             <div id="logo"></div>
-                            <p className="logo-name btn tab logo-link">mugisathedev</p>
+                            <p className="logo-name btn tab logo-NavLink">mugisathedev</p>
                         </div>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/" className="btn tab">Blog</Link>
+                    <NavLink to={appRoutes.blogs} className={`btn tab`}>Blog</NavLink>
                 </li>
                 <li>
-                    <Link to="/" className="btn hire tab bg-primary txt-white">Hire Me</Link>
+                    <NavLink to={appRoutes.hire} className="btn hire tab bg-primary txt-white">Hire Me</NavLink>
                 </li>
             </ul>
             <ul className="container-fluid flex mobile">
-                <div className="md-tabs grid" onClick={() => setMobileMenuOpen(state => !state)}>
+                <div className="md-tabs grid" onClick={() => openMobileNav()}>
                     <li>
                         { mobileMenuOpen ? <MdClose /> : <FaBars />}
                     </li>
                 </div>
-                <Link to="/" className="md-tabs grid logo">
+                <NavLink to={appRoutes.home} className="md-tabs grid logo">
                     <li>
                         <div className="grid place-center logo">
-                            <p className="logo-name btn tab logo-link">MtD</p>
+                            <p className="logo-name btn tab logo-NavLink">MtD</p>
                         </div>
                     </li>
-                </Link>
-                <div className="md-tabs grid" onClick={() => setSettingIsOpen(state => !state)}>
+                </NavLink>
+                <div className="md-tabs grid" onClick={() => openSettingMobal()}>
                     <li>
                         { settingIsOpen ? <MdClose /> : <FaCog />}
                     </li>
                 </div>
             </ul>
             <div className={`mobile-menu-tabs grid ${ mobileMenuOpen ? "inView" : ""}`}>
-                <Link to="/" className="menu-tabs grid active">
+                <NavLink to={appRoutes.home} onClick={() => openMobileNav()} className="menu-tabs grid">
                     Home
-                </Link>
-                <Link to="/" className="menu-tabs grid">
+                </NavLink>
+                <NavLink to={appRoutes.projects} onClick={() => openMobileNav()} className="menu-tabs grid">
                     Projects
-                </Link>
-                <Link to="/" className="menu-tabs grid">
+                </NavLink>
+                <NavLink to={appRoutes.blogs} onClick={() => openMobileNav()} className="menu-tabs grid">
                     Blog
-                </Link>
-                <Link to="/" className="menu-tabs grid">
+                </NavLink>
+                <NavLink to={appRoutes.home} onClick={() => openMobileNav()} className="menu-tabs grid">
                     Contact Us
-                </Link>
-                <Link to="/" className="menu-tabs grid hire bg-primary txt-white">
+                </NavLink>
+                <NavLink to={appRoutes.hire} onClick={() => openMobileNav()} className="menu-tabs grid hire bg-primary txt-white">
                     Hire Me
-                </Link>
+                </NavLink>
             </div>
             <div className={`mobile-settings grid ${settingIsOpen ? "inView" : ""}`}>
                 <div className="settings-item grid language">
                     <form action="">
-                        <label htmlFor="language-setter">
+                        <label htmlFor="location-setter">
                             Location:
                         </label>
-                        <select name="" id="language-setter">
-                            <option value="English" selected >Uganda</option>
-                            <option value="French" >France</option>
+                        <select name="" id="location-setter" defaultValue={"Uganda"}>
+                            <option value="Uganda" >Uganda</option>
+                            <option value="France" >France</option>
                         </select>
                     </form>
                 </div>
@@ -110,8 +149,8 @@ const Header = () => {
                         <label htmlFor="language-setter">
                             Language:
                         </label>
-                        <select name="" id="language-setter">
-                            <option value="English" selected >English</option>
+                        <select name="" id="language-setter" defaultValue={"English"}>
+                            <option value="English" >English</option>
                             <option value="French" >French</option>
                         </select>
                     </form>

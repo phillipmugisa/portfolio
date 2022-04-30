@@ -306,10 +306,9 @@ main section{
 
 section {
   --gap: 2rem;
-  margin: 2.5rem auto;
+  margin: 2rem auto 3rem;
   /* height: 100vh; */
   align-content: center;
-  padding: 3rem 0;
 }
 
 /* button */
@@ -346,10 +345,17 @@ form {
   font-family: var(--body-font-family);
 }
 
-form fieldset {
-  gap: 0 2rem;
-  border: 1px solid hsl(var(--text-color) / .5);
-  padding: 1rem;
+form fieldset,
+form .body {
+  --gap: 1rem;
+  /* border: 1px solid hsl(var(--text-color) / .5); */
+  border: none;
+}
+
+form.contact label {
+  font-size: .9rem;
+  color: hsl(var(--primary-color) / var(--alpha));
+  font-weight: 500;
 }
 
 form fieldset legend:after,
@@ -364,11 +370,18 @@ form .form-group {
   align-items: center;
 }
 
-input {
+input,
+textarea {
   padding: 0.5rem 1rem;
   outline: none;
   border: 1px solid hsl(var(--text-color) / .7);
-  border-radius: .5rem;
+  border-radius: 5px;
+}
+
+
+input[type="submit"] {
+  border: none;
+  padding: 0.5rem 1.5rem;
 }
 
 input:focus {
@@ -389,7 +402,7 @@ header ul {
   list-style: none;
   list-style-position: outside;
   grid-template-columns: repeat(5, auto);
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   color:hsl(var(--text-color) / 1);
   background-color: transparent;
@@ -431,7 +444,7 @@ header ul .btn {
 }
 
 header ul .btn.hire {
-  border-radius: 50px;
+  border-radius: 10px;
 }
 
 /* mobile header */
@@ -472,7 +485,7 @@ header ul.mobile .md-tabs:not(.logo):active {
 }
 
 .mobile-menu-tabs {
-  bottom: -1;
+  top: 3.5rem;
   left: 0;
   block-size: 100%;
 }
@@ -501,8 +514,10 @@ header ul.mobile .md-tabs:not(.logo):active {
 }
 
 .mobile-menu-tabs .menu-tabs.hire {
-  border-radius: 30px;
+  border-radius: 20px;
   color: white;
+  display: grid;
+  place-items: center;
 }
 
 .mobile-settings {
@@ -582,6 +597,22 @@ header ul.mobile .md-tabs:not(.logo):active {
 .toTop .infooter {
   background: white;
   color: hsl(var(--secondary-color) / 1);
+}
+
+/* main */
+body.on-scroll {
+  overflow: hidden;
+}
+main.fade {
+  position: relative;
+}
+main.fade::after {
+  content: "";
+  inline-size: 100%;
+  block-size: 100%;
+  top: 0;
+  position: absolute;
+  background-color: hsla(236, 100%, 10%, 0.585);
 }
 
 /* footer */
@@ -698,7 +729,7 @@ footer form input {
 }
 
 footer form input[type="submit"] {
-  border-radius: 50px;
+  border-radius: 5px;
 }
 
 footer form input[type="email"] {
@@ -741,6 +772,11 @@ section {
   scroll-snap-align: start;
 }
 
+/* spacer */
+.divider {
+  border: 0px solid hsl(var(--secondary-color) / .1);
+  border-width: 0 0 1px
+}
 
 @media screen 
     and (max-width: 1024px){

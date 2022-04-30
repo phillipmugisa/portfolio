@@ -1,18 +1,20 @@
-import React, { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useEffect, useContext } from "react";
+import { NavLink } from "react-router-dom";
 
 import { 
     FaGithub, FaInstagram, FaLinkedinIn,
     FaPhoneAlt, FaMapMarkedAlt, FaArrowUp
 } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 import AppButton from './appButton';
 
-import { MdEmail } from "react-icons/md";
+import { AppContext } from '../../hooks/AppContext';
 
 const Footer = () => {
 
     const toTopElem = useRef(null);
+    const {appRoutes} = useContext(AppContext);
 
     useEffect(() => {
         window.addEventListener("scroll", function() {
@@ -79,15 +81,15 @@ const Footer = () => {
                                 </div>
                             </div>
                             <div className="social-icons flex">
-                                <Link to="" className="icon">
+                                <NavLink to="" className="icon">
                                     <FaGithub />
-                                </Link>
-                                <Link to="" className="icon">
+                                </NavLink>
+                                <NavLink to="" className="icon">
                                     <FaInstagram />
-                                </Link>
-                                <Link to="" className="icon">
+                                </NavLink>
+                                <NavLink to="" className="icon">
                                     <FaLinkedinIn />
-                                </Link>
+                                </NavLink>
                             </div>
                         </div>
                     </div>
@@ -97,12 +99,12 @@ const Footer = () => {
                         </h5>
                         <div className="footer-part-body grid">
                             <div className="footer-part-links grid">
-                                <Link to="" className="footer-part-link">Django (10)</Link>
-                                <Link to="" className="footer-part-link">Postgres (10)</Link>
-                                <Link to="" className="footer-part-link">React (10)</Link>
-                                <Link to="" className="footer-part-link">Figma (10)</Link>
-                                <Link to="" className="footer-part-link">Adobe (10)</Link>
-                                <Link to="" className="footer-part-link">Vanilla JavaScript (10)</Link>
+                                <NavLink to="" className="footer-part-link">Django (10)</NavLink>
+                                <NavLink to="" className="footer-part-link">Postgres (10)</NavLink>
+                                <NavLink to="" className="footer-part-link">React (10)</NavLink>
+                                <NavLink to="" className="footer-part-link">Figma (10)</NavLink>
+                                <NavLink to="" className="footer-part-link">Adobe (10)</NavLink>
+                                <NavLink to="" className="footer-part-link">Vanilla JavaScript (10)</NavLink>
                             </div>
                         </div>
                     </div>
@@ -112,10 +114,10 @@ const Footer = () => {
                         </h5>
                         <div className="footer-part-body grid">
                             <div className="footer-part-links grid site-map">
-                                <Link to="" className="footer-part-link">Home</Link>
-                                <Link to="" className="footer-part-link">Projects</Link>
-                                <Link to="" className="footer-part-link">Blog</Link>
-                                <Link to="" className="footer-part-link">Privacy Policy</Link>
+                                <NavLink to={appRoutes.home} className="footer-part-link">Home</NavLink>
+                                <NavLink to={appRoutes.projects} className="footer-part-link">Projects</NavLink>
+                                <NavLink to={appRoutes.blogs} className="footer-part-link">Blog</NavLink>
+                                <NavLink to={appRoutes.home} className="footer-part-link">Privacy Policy</NavLink>
                             </div>
                         </div>
                     </div>

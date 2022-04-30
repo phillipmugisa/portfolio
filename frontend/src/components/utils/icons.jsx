@@ -8,7 +8,7 @@ import {
     SiJavascript, SiPython
 } from "react-icons/si";
 
-import { FaShareAlt, FaHeart, FaComment } from "react-icons/fa";
+import { FaShareAlt, FaHeart, FaComment, FaEllipsisH } from "react-icons/fa";
 
 const icons = {
     
@@ -34,7 +34,8 @@ const icons = {
     
     Share : <FaShareAlt />,
     Heart : <FaHeart />,
-    Comment : <FaComment />
+    Comment : <FaComment />,
+    Options : <FaEllipsisH />
 }
 
 export default icons;

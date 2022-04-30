@@ -12,8 +12,8 @@ function HomePage() {
         <React.Fragment>
             <PageStarter />
             <About />
-            <Projects />
-            <Blogs />
+            <Projects url={""}/>
+            <Blogs urls={""} isHorizontal={true}/>
             <StacksUsed />
             <ScrapperNews />
         </React.Fragment>
