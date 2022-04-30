@@ -29,7 +29,7 @@ function App() {
   const appRoutes = useContext(AppContext);
   
   useEffect(() => {
-    // window.scrollTo({top:0, behavior: 'smooth'})
+    window.scrollTo({top:0, behavior: 'smooth'})
   },[location.pathname]);
 
   return (
