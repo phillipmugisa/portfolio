@@ -36,11 +36,13 @@ const Header = () => {
     }
 
     const openMobileNav = () => {
+        if (settingIsOpen) return;
         toggleBodyScrollability();
         setMobileMenuOpen(state => !state);
     }
 
     const openSettingMobal = () => {
+        if (mobileMenuOpen) return;
         const mainElem = document.querySelector('.main-section');
 
         
@@ -125,14 +127,22 @@ const Header = () => {
                 <NavLink to={appRoutes.blogs} onClick={() => openMobileNav()} className="menu-tabs grid">
                     Blog
                 </NavLink>
-                <NavLink to={appRoutes.home} onClick={() => openMobileNav()} className="menu-tabs grid">
+                {/* <NavLink to={appRoutes.home} onClick={() => openMobileNav()} className="menu-tabs grid">
                     Contact Us
-                </NavLink>
+                </NavLink> */}
                 <NavLink to={appRoutes.hire} onClick={() => openMobileNav()} className="menu-tabs grid hire bg-primary txt-white">
                     Hire Me
                 </NavLink>
             </div>
             <div className={`mobile-settings grid ${settingIsOpen ? "inView" : ""}`}>
+                <div className="settings-item grid">                    
+                    <ToggleButton
+                        defaultOn="Vanilla Js"
+                        defaultOff="React"
+                        onChange={handleToggleSwitchChange}
+                    />
+                </div>
+                <div className="divider"></div>
                 <div className="settings-item grid language">
                     <form action="">
                         <label htmlFor="location-setter">
@@ -144,7 +154,7 @@ const Header = () => {
                         </select>
                     </form>
                 </div>
-                <div className="settings-item grid language">
+                {/* <div className="settings-item grid language">
                     <form action="">
                         <label htmlFor="language-setter">
                             Language:
@@ -154,14 +164,7 @@ const Header = () => {
                             <option value="French" >French</option>
                         </select>
                     </form>
-                </div>
-                <div className="settings-item grid">                    
-                    <ToggleButton
-                        defaultOn="Vanilla JavaScript"
-                        defaultOff="React"
-                        onChange={handleToggleSwitchChange}
-                    />
-                </div>
+                </div> */}
                 <div className="settings-cta grid">                    
                     <AppButton
                         classes="bg-white txt-secondary roundbr"

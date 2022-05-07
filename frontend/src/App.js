@@ -18,6 +18,7 @@ import HirePage from './pages/hirePage';
 import DesignSystem from './pages/designSystem';
 import SingleProjectPage from './pages/singleProjectPage';
 import SingleBlogPage from './pages/singleBlogPage';
+import ErrorPage from './pages/errorPage';
 
 // hooks and context
 import {AppContext, AppContextProvider } from './hooks/AppContext';
@@ -45,6 +46,7 @@ function App() {
               <Route path={appRoutes.design} exact element={<DesignSystem />} />
               <Route path={`${appRoutes.projects}/:slug/:id`} exact element={<SingleProjectPage />} />
               <Route path={`${appRoutes.blogs}/:slug/:id`} exact element={<SingleBlogPage />} />
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           </main>
         <Footer />

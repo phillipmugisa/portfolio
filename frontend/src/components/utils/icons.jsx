@@ -1,5 +1,6 @@
 import React from 'react';
 
+// simple icons
 import {
     SiMysql, SiPostgresql, SiDjango,
     SiFlask, SiFlutter, SiGithub,
@@ -8,7 +9,11 @@ import {
     SiJavascript, SiPython
 } from "react-icons/si";
 
+// font awesome
 import { FaShareAlt, FaHeart, FaComment, FaEllipsisH } from "react-icons/fa";
+
+// material design
+import { MdOutlineErrorOutline } from "react-icons/md";
 
 const icons = {
     
@@ -35,7 +40,9 @@ const icons = {
     Share : <FaShareAlt />,
     Heart : <FaHeart />,
     Comment : <FaComment />,
-    Options : <FaEllipsisH />
+    Options : <FaEllipsisH />,
+
+    Error: <MdOutlineErrorOutline />
 }
 
 export default icons;
