@@ -63,11 +63,11 @@ const Header = () => {
 
         window.addEventListener("scroll", function(){
             if  (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                headerRef.current.classList.add('elevated')
+                headerRef.current.classList.add('elevate')
             }
             else
             {
-                headerRef.current.classList.remove('elevated')
+                headerRef.current.classList.remove('elevate')
             }
         }, false);
          
