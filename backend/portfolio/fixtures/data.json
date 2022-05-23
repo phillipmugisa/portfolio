@@ -1,0 +1,62 @@
+[{
+    "model" : "portfolio.Stack",
+    "pk": 1,
+    "fields" : {
+      "name": "sed"
+    }
+  }, {
+    "model" : "portfolio.Stack",
+    "pk": 2,
+    "fields" : {
+      "name": "eget"
+    }
+  }, {
+    "model" : "portfolio.Stack",
+    "pk": 3,
+    "fields" : {
+      "name": "cursus"
+    }
+  }, {
+    "model" : "portfolio.Stack",
+    "pk": 4,
+    "fields" : {
+      "name": "cum sociis"
+    }
+  }, {
+    "model" : "portfolio.Stack",
+    "pk": 5,
+    "fields" : {
+      "name": "nulla"
+    }
+  },
+  {
+    "model" : "portfolio.Field",
+    "pk": 1,
+    "fields" : {
+      "name": "sed"
+    }
+  }, {
+    "model" : "portfolio.Field",
+    "pk": 2,
+    "fields" : {
+      "name": "eget"
+    }
+  }, {
+    "model" : "portfolio.Field",
+    "pk": 3,
+    "fields" : {
+      "name": "cursus"
+    }
+  }, {
+    "model" : "portfolio.Field",
+    "pk": 4,
+    "fields" : {
+      "name": "cum sociis"
+    }
+  }, {
+    "model" : "portfolio.Field",
+    "pk": 5,
+    "fields" : {
+      "name": "nulla"
+    }
+  }]
