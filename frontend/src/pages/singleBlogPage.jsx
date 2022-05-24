@@ -152,6 +152,27 @@ const SingleBlogPage = () => {
 
     const [ snippetOpen, setSnippetOpen ] = useState(false);
 
+
+    const showCommentModel = (id) => {
+
+        // dim background
+        const mainElem = document.querySelector('.main-section');        
+        if (!mainElem.classList.contains("fade"))
+        {
+            mainElem.classList.add("fade")
+        }
+
+        // show model on screen
+        const model = document.querySelector("#comment-model");
+        if (!model.classList.contains("in-view"))
+        {
+            model.classList.add("in-view");
+            const blog_id_input_field = model.querySelector("#blog_id");
+            // set model id input to id argumnet
+            blog_id_input_field.value = id;
+        }
+    }
+
     useEffect(() => {
         document.querySelectorAll(".show-mobile-reactions")
             .forEach(btn => btn.addEventListener('click', () => {
@@ -173,7 +194,9 @@ const SingleBlogPage = () => {
                     <div className="article-reaction-stats flex">
                         {icons.Heart}
                         {icons.Share}
-                        {icons.Comment}
+                        <span onClick={() => showCommentModel("1")}>
+                            {icons.Comment}
+                        </span>
                     </div>
                 </div>
                 <div className="divider"></div>

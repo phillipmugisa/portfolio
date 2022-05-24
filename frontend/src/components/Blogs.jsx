@@ -25,11 +25,11 @@ const Blogs = (props) => {
             <SectionHeading headingText={"Blog Posts"} classes="txt-secondary"/>
             <div className={`blogs-body ${ blogBodyIsHorizontal ? "horizontal-scroll" : "grid-list"} grid`}>
                 <BlogCard blogId = {1}/>
-                <BlogCard blogId = {1}/>
-                <BlogCard blogId = {1}/>
-                <BlogCard blogId = {1}/>
-                <BlogCard blogId = {1}/>
-                <BlogCard blogId = {1}/>
+                <BlogCard blogId = {2}/>
+                <BlogCard blogId = {3}/>
+                <BlogCard blogId = {4}/>
+                <BlogCard blogId = {5}/>
+                <BlogCard blogId = {6}/>
             </div>
 
             {

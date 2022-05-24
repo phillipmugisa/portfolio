@@ -25,10 +25,25 @@ const SingleProjectPage = () => {
                         <img src={TestImg} alt="test" />
                     </div>
                 </div>
-                <div className="article-time-stats flex">
-                    <span className="start-date">August 2019</span>
-                    <span> - </span>
-                    <span className="end-date">November 2021</span>
+                <div className="flex">
+                    <div className="article-time-stats flex">
+                        <span className="start-date">August 2019</span>
+                        <span> - </span>
+                        <span className="end-date">November 2021</span>
+                    </div>
+                    <div className="article-time-stats flex git-link">
+                        <span className="start-date">GitHub</span>
+                        <span> : </span>
+                        <span className="end-date">
+                            <a
+                                href="www.github.com/phillipmugisa"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                www.github.com/phillipmugisa
+                                </a>
+                        </span>
+                    </div>
                 </div>
                 <div className="article-category-tags flex">
                     <AppButton

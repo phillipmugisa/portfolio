@@ -15,9 +15,29 @@ const BlogCard = ({blogId}) => {
   
     const {appRoutes} = useContext(AppContext);
 
+    const showCommentModel = (id) => {
+
+        // dim background
+        const mainElem = document.querySelector('.main-section');        
+        if (!mainElem.classList.contains("fade"))
+        {
+            mainElem.classList.add("fade")
+        }
+
+        // show model on screen
+        const model = document.querySelector("#comment-model");
+        if (!model.classList.contains("in-view"))
+        {
+            model.classList.add("in-view");
+            const blog_id_input_field = model.querySelector("#blog_id");
+            // set model id input to id argumnet
+            blog_id_input_field.value = id;
+        }
+    }
+
     return (
         <div className="blog-card grid">
-            <Link to={`${appRoutes.blogs}/sheHarbour/2`}>                    
+            <Link to={`${appRoutes.blogs}/sheHarbour/${blogId}`}>                    
                 <h4 className="blog-card-title txt-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
             </Link>
             <p className="blog-card-description">
@@ -26,7 +46,9 @@ const BlogCard = ({blogId}) => {
             <div className="blog-card-reaction flex mg-block-sm">
                 {icons.Heart}
                 {icons.Share}
-                {icons.Comment}
+                <span onClick={() => showCommentModel(blogId)}>
+                    {icons.Comment}
+                </span>
             </div>
         </div>
     );

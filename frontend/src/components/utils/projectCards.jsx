@@ -14,8 +14,8 @@ import TestImg from './test.png'
 import { AppContext } from '../../hooks/AppContext';
 
 const ProjectCard = ({ProjectId}) => {
-  
-  const {appRoutes} = useContext(AppContext);
+    
+    const {appRoutes} = useContext(AppContext);
 
     return (
         <div className="project-card grid">

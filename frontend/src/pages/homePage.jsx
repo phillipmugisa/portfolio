@@ -13,8 +13,8 @@ function HomePage() {
             <PageStarter />
             <About />
             <Projects url={""}/>
-            <Blogs urls={""} isHorizontal={true}/>
             <StacksUsed />
+            <Blogs urls={""} isHorizontal={true}/>
             <ScrapperNews />
         </React.Fragment>
     );

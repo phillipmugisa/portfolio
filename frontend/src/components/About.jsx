@@ -9,10 +9,12 @@ const About = () => {
                 <div className="img-wrapper">
                     <img src={process.env.PUBLIC_URL + '/Me.jpg'} alt="phillip mugisa" className="about-img" />
                 </div>
-                <div className="about-discription grid txt-white">
+                <div className="about-discription grid">
                     <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni sit libero cumque, culpa, nihil rem placeat recusandae aliquam error deleniti non iure laborum architecto, blanditiis optio voluptatum! Facilis numquam eos, incidunt ex officia quae aliquam asperiores cupiditate natus, ad itaque dolores aliquid esse alias laudantium ipsum! Tenetur dicta esse facilis?
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni sit libero cumque, culpa, nihil rem placeat recusandae aliquam error deleniti non iure laborum architecto</p>
+                        I am Mugisa Phillip, a Full-Stack Software Developer with working experience of 4 year. I am well-verse with various technologies in different software fields ranging from web development, mobile application development, Ui/Ux Design etc.
+                        <br/>
+                        My years of experience are backed with various projects through which I have been about to be exposed to the different tasks in the different software fields.
+                    </p>
                     <div className="sub-details grid">
                         <p>
                             <span className="title">Nationality</span>

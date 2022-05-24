@@ -35,17 +35,8 @@ const Header = () => {
         }
     }
 
-    const openMobileNav = () => {
-        if (settingIsOpen) return;
-        toggleBodyScrollability();
-        setMobileMenuOpen(state => !state);
-    }
-
-    const openSettingMobal = () => {
-        if (mobileMenuOpen) return;
-        const mainElem = document.querySelector('.main-section');
-
-        
+    const fadeBackground = () => {
+        const mainElem = document.querySelector('.main-section');        
         if (mainElem.classList.contains("fade"))
         {
             mainElem.classList.remove("fade")
@@ -54,7 +45,18 @@ const Header = () => {
         {
             mainElem.classList.add("fade")
         }
+    }
 
+    const openMobileNav = () => {
+        if (settingIsOpen) return;
+        fadeBackground()
+        toggleBodyScrollability();
+        setMobileMenuOpen(state => !state);
+    }
+
+    const openSettingMobal = () => {
+        if (mobileMenuOpen) return;
+        fadeBackground()
         toggleBodyScrollability();
         setSettingIsOpen(state => !state);
     }
@@ -99,9 +101,9 @@ const Header = () => {
                 </li>
             </ul>
             <ul className="container-fluid flex mobile">
-                <div className="md-tabs grid" onClick={() => openMobileNav()}>
+                <div className="md-tabs grid" onClick={() => openSettingMobal()}>
                     <li>
-                        { mobileMenuOpen ? <MdClose /> : <FaBars />}
+                        { settingIsOpen ? <MdClose /> : <FaCog />}
                     </li>
                 </div>
                 <NavLink to={appRoutes.home} className="md-tabs grid logo">
@@ -111,9 +113,9 @@ const Header = () => {
                         </div>
                     </li>
                 </NavLink>
-                <div className="md-tabs grid" onClick={() => openSettingMobal()}>
+                <div className="md-tabs grid" onClick={() => openMobileNav()}>
                     <li>
-                        { settingIsOpen ? <MdClose /> : <FaCog />}
+                        { mobileMenuOpen ? <MdClose /> : <FaBars />}
                     </li>
                 </div>
             </ul>

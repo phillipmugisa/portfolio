@@ -8,6 +8,7 @@ import {
 import { MdEmail } from "react-icons/md";
 
 import AppButton from './appButton';
+import CommentModel from './models/commentModel';
 
 import { AppContext } from '../../hooks/AppContext';
 
@@ -53,6 +54,7 @@ const Footer = () => {
                     <FaArrowUp />
                 </AppButton>
             </div>
+            <CommentModel />
             <footer className="grid bg-secondary">
                 <div className="container grid">
                     <div className="footer-part grid">

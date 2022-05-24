@@ -2,29 +2,34 @@ import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 import AppButton from "./utils/appButton";
-import ToggleButton from "./utils/toggleButton";
+// import ToggleButton from "./utils/toggleButton";
 
 const PageStarter = () => {
 
-    const handleToggleSwitchChange = (onState) => {
-        // redirect basing on state
-        // console.log(onState)
-    }
+    // const handleToggleSwitchChange = (onState) => {
+    //     // redirect basing on state
+    //     // console.log(onState)
+    // }
 
     return (
-        <section className="page-starter container grid gap-1 mg-block-3">
-            <div className="left grid gap-sm gap-md-1 mg-block-2">
+        <section className="page-starter container grid gap-1 mg-block-3 mg-md-block-1">
+            <div className="left grid gap-1">
                 <div className="page-starter-text grid">                
                     {/* <h1 className="page-heading">I am Mugisa Phillip</h1> */}
                     <TypeWriter
                         text1="I am Mugisa Phillip"
-                        text2="I am a full stack web developer"
+                        // text2="I am a full stack web developer"
                         classes="page-heading"
                         speed={1}
                     />
                     <h3 className="page-sub-heading">Offering solutions to all your Software needs.</h3>
                 </div>
-                <div className="tags gap-sm flex">
+                <ul className="news-category flex gap-1">
+                    <li>UI/UX Design</li>
+                    <li>Web Development</li>
+                    <li>Mobile App Development</li>
+                </ul>
+                {/* <div className="tags gap-sm flex">
                     <AppButton
                         classes="br-secondary txt-secondary outlined tag roundbr"
                         text = 'UI/UX Design'
@@ -40,22 +45,22 @@ const PageStarter = () => {
                         text = 'Mobile App Development'
                         onClickUrl=''
                     />
-                </div>
+                </div> */}
                 <AppButton
                     classes="bg-primary txt-white cta roundbr"
                     text = 'Hire Me'
                     onClickUrl=''
                 />
             </div>
-            <div className="right">
+            {/* <div className="right">
                 <ToggleButton
                     defaultOn="Vanilla JavaScript"
                     defaultOff="React"
                     onChange={handleToggleSwitchChange}
                 />
-            </div>
+            </div> */}
             <div className="bottom">
-                <div className="pre-resume grid gap-1">
+                {/* <div className="pre-resume grid gap-1">
                     <div className="resume-card flex">
                         <span className="card-count">4</span>
                         <span className="card-discription">Years of Experience</span>
@@ -64,7 +69,14 @@ const PageStarter = () => {
                         <span className="card-count">10+</span>
                         <span className="card-discription">Projects worked on.</span>
                     </div>
-                </div>
+                </div> */}
+                {/* <div className="page-starter-toggle mg-block-1">                
+                    <ToggleButton
+                        defaultOn="Vanilla Js"
+                        defaultOff="React"
+                        onChange={handleToggleSwitchChange}
+                    />
+                </div> */}
             </div>
         </section>
     );
@@ -81,35 +93,35 @@ function TypeWriter({text1, text2, classes, speed}) {
         // let styles = getComputedStyle(typewriter.current);
         // let typewriterSpeed = styles.getPropertyValue('--typewriterSpeed');
         // let typewriterCharacters = styles.getPropertyValue('--typewriterCharacters');
-        typewriter.current.style.setProperty('--typewriterSpeed', '5s');
+        typewriter.current.style.setProperty('--typewriterSpeed', '3s');
 
         let text1length = text1.length;
-        let text2length = text2.length;
+        // let text2length = text2.length;
 
         typewriter.current.textContent = text1;
         typewriter.current.classList.add('type')
         typewriter.current.style.setProperty('--typewriterCharacters', text1length);
 
-        typewriter.current.addEventListener('animationend', function(ev) {
-            if (ev.animationName === 'typewriter' && typewriter.current.textContent === text1 ) {
-                setTimeout(() => {
-                    typewriter.current.classList.remove('type');
-                    typewriter.current.classList.add('backspace');
+        // typewriter.current.addEventListener('animationend', function(ev) {
+        //     if (ev.animationName === 'typewriter' && typewriter.current.textContent === text1 ) {
+        //         setTimeout(() => {
+        //             typewriter.current.classList.remove('type');
+        //             typewriter.current.classList.add('backspace');
 
-                    typewriter.current.addEventListener('animationend', function(ev) {
-                        if (ev.animationName === 'backspace') {
-                            setTimeout(() => {
-                                typewriter.current.classList.remove('backspace');
-                                typewriter.current.classList.add('type');
-                                typewriter.current.textContent = text2;
-                                typewriter.current.style.setProperty('--typewriterCharacters', text2length);
-                            }, 1000)
-                        }
-                    })
+        //             typewriter.current.addEventListener('animationend', function(ev) {
+        //                 if (ev.animationName === 'backspace') {
+        //                     setTimeout(() => {
+        //                         typewriter.current.classList.remove('backspace');
+        //                         typewriter.current.classList.add('type');
+        //                         typewriter.current.textContent = text2;
+        //                         typewriter.current.style.setProperty('--typewriterCharacters', text2length);
+        //                     }, 1000)
+        //                 }
+        //             })
 
-                }, 1000);
-            }
-        })
+        //         }, 1000);
+        //     }
+        // })
 
         
     };

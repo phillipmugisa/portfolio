@@ -66,8 +66,7 @@ const HirePage = () => {
                         </div>
                         <div className="form-group grid">
                             <label htmlFor="project-description">Project Description</label>
-                            <textarea rows="5" id="project-description">
-                                </textarea>
+                            <textarea rows="5" id="project-description"></textarea>
                         </div>
                     </fieldset>
 
