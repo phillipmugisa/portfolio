@@ -82,5 +82,6 @@ class AdminTest(unittest.TestCase):
         self.browser.find_element(By.LINK_TEXT, "LOG OUT").click()
         self.assertIn('Logged out', self.browser.page_source)
 
+
 if __name__ == "__main__":
     unittest.main()

@@ -18,7 +18,7 @@ const SingleProjectPage = () => {
         <React.Fragment>
             <section className="article container grid">
                 <div className="article-start-infor grid">
-                    <h3 className="article-heading">ChildsHope Charity Organization Website</h3>
+                    <h4 className="article-heading">ChildsHope Charity Organization Website</h4>
                 </div>
                 <div className="article-img-stats grid">
                     <div className="img-wrapper grid">

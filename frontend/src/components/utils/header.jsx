@@ -86,7 +86,7 @@ const Header = () => {
                 <li>
                     <NavLink to={appRoutes.home} className="logo">
                         <div className="grid place-center logo">
-                            <div id="logo"></div>
+                            {/* <div id="logo"></div> */}
                             <p className="logo-name btn tab logo-NavLink">mugisathedev</p>
                         </div>
                     </NavLink>

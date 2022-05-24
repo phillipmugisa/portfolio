@@ -102,25 +102,17 @@ class ModelTest(TestCase):
             description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit maxime voluptatum.",
             source = "Google News"
         )
-
-class AdminTest(TestCase):
-    def setUp(self) -> None:
-        self.client = Client()
-
-    def test_admin_login(self):
-        response = self.client.get('/admin')
-
-class RouteTest(TestCase):
-    def setUp(self) -> None:
-        self.client = Client()
+# class RouteTest(TestCase):
+#     def setUp(self) -> None:
+#         self.client = Client()
 
 
-    def test_default_route(test):
-        pass
+#     def test_default_route(test):
+#         pass
 
     
-    def test_api_route(self):
+#     def test_api_route(self):
 
-        resp = self.client.get('api')
-        print(resp)
+#         resp = self.client.get('api')
+#         print(resp)
         

@@ -24,7 +24,7 @@ const Projects = ({ url }) => {
     return (
         <section className="projects container grid">
             <SectionHeading headingText={"Projects"} classes="txt-secondary"/>
-            <div className="projects-body grid">
+            <div className="news-body grid">
                 <ProjectCard ProjectId={1}/>
                 <ProjectCard ProjectId={1} />
                 <ProjectCard ProjectId={1} />

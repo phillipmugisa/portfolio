@@ -163,8 +163,9 @@ const SingleBlogPage = () => {
         <React.Fragment>
             <section className="article container grid">
                 <div className="article-start-infor grid">
-                    <h3 className="article-heading">ChildsHope Charity Organization Website</h3>
+                    <h4 className="article-heading">ChildsHope Charity Organization Website</h4>
                 </div>
+                <div className="divider"></div>
                 <div className="article-img-stats grid">
                     <div className="img-wrapper grid">
                         <img src={TestImg} alt="test" />
@@ -175,6 +176,7 @@ const SingleBlogPage = () => {
                         {icons.Comment}
                     </div>
                 </div>
+                <div className="divider"></div>
                 <div className="article-time-stats flex">
                     <span className="start-date">August 2019</span>
                     <span> - </span>

@@ -21,7 +21,7 @@ const Blogs = (props) => {
     // }
 
     return (
-        <section className="blogs container-fluid grid pd-inline-3 pd-md-inline-2">
+        <section className="blogs container grid">
             <SectionHeading headingText={"Blog Posts"} classes="txt-secondary"/>
             <div className={`blogs-body ${ blogBodyIsHorizontal ? "horizontal-scroll" : "grid-list"} grid`}>
                 <BlogCard blogId = {1}/>

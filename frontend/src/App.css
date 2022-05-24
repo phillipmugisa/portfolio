@@ -177,17 +177,21 @@ header ul .logo:hover .btn {
     display: grid;
 }
 
+.page-starter > * {
+    border: 1px solid red;
+}
+
 .page-starter .left {
     grid-column: 1 / -1;
     grid-row: 1 / 2;
-    justify-items: center;
+    /* justify-items: center;
     justify-content: center;
     align-content: center;
-    text-align: center;
+    text-align: center; */
 }
 
 .page-starter .left > * {
-    justify-self: center;
+    /* justify-self: center; */
 }
 
 .page-starter .right {
@@ -205,8 +209,8 @@ header ul .logo:hover .btn {
 
 .page-starter-text {
     --gap: 0rem;
-    justify-content: center;
-    justify-items: center;
+    /* justify-content: center;
+    justify-items: center; */
 }
 
 /* typewriter */
@@ -304,7 +308,7 @@ header ul .logo:hover .btn {
     text-transform: capitalize;
     color: hsl(var(--primary-color) / var(--alpha));
     /* font-weight: 400; */
-    font-size: clamp(2rem, calc(3vw + 2rem), 3rem);
+    font-size: clamp(1.6rem, calc(1.6vw + 1.6rem), 2rem);
     max-inline-size: 30ch;
 }
 
@@ -574,13 +578,17 @@ input:checked + .slider {
 
 /* project cards */
 .project-card {
-    grid-template-columns: .1fr 1fr;
-    border-radius: 10px;
+    grid-template-columns: 1fr;
+    border-radius: 5px;
     overflow: hidden;
-    --gap: 1rem;
-    background-color: hsl(262, 100%, 99.9%);
+    --gap: .5rem;
     box-shadow: -1px -1px 1px rgba(0, 0, 0, .1),
                  1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.projects-body {
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
 }
 
 .project-card.mini {
@@ -600,17 +608,19 @@ input:checked + .slider {
     font-size: 2rem;
 }
 
-.project-card .body {
-    grid-template-columns: .6fr 1fr;
-    padding: 1rem 2rem;
-    --gap: 5rem;
-    justify-items: space-between;
+/* .project-card .body { */
+    /* grid-template-columns: .6fr 1fr; */
+    /* padding: 1rem 2rem; */
+    /* --gap: 1rem; */
+/* }  */
+
+.divider {
+    inline-size: 100%;
 }
 
 .project-card.mini .body {
     grid-template-columns: 1fr;
     padding: 1.5rem 0rem;
-    --gap: 1rem;
     justify-items: space-between;
 }
 
@@ -619,15 +629,26 @@ input:checked + .slider {
 }
 
 .project-img-wrapper {
-    block-size: 55vh;
-    aspect-ratio: 1/1;
+    block-size: 30vh;
+    inline-size: 100%;
     overflow: hidden;
+    border-radius: 5px;
 }
+
 
 .project-card-details {
     --gap: .5rem;
-    padding-inline: 2rem;
+    padding: 1.5rem;
     align-self: flex-start;
+}
+
+.project-card-details.mini {
+    gap: .5rem;
+}
+
+.project-card-details:not(.mini) {
+    text-align: center;
+    justify-items: center;
 }
 
 .project-card-details > * {
@@ -639,13 +660,12 @@ input:checked + .slider {
     font-size: 1rem;
 }
 
-.project-tags {
+.project-card .news-category {
     --gap: .5rem;
     flex-wrap: wrap;
 }
-
-.project-tags > * {
-    font-size: clamp(.6rem, calc(2vw + .5rem), .8rem);
+.project-card .news-category > * {
+    color: rgba(3, 26, 26, 0.842);
 }
 
 .project-card .cta{
@@ -664,11 +684,12 @@ input:checked + .slider {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
+
 .blog-card {
     border: 1px solid hsl(var(--secondary-color) / .25);
     padding: 1.5rem 1.5rem;
     --gap: .5rem;
-    border-radius: 1rem;
+    border-radius: 10px;
 }
 
 .blog-card-reaction {
@@ -744,7 +765,7 @@ input:checked + .slider {
 
 .paginator .paginator-tabs {
     --alpha: .7;
-    border: 0px solid hsl(var(--secondary-color) / var(--alpha));
+    border: 0px solid hsl(var(--secondary-color) / 0.2);
     color: hsl(var(--secondary-color) / var(--alpha));
     /* border-radius: 10px; */
     padding: .15rem .75rem;
@@ -752,10 +773,13 @@ input:checked + .slider {
 }
 
 .paginator .paginator-tabs.active,
-.paginator .paginator-tabs:hover,
 .paginator .paginator-tabs:focus {
-    border-width: 0 0 1px;
-    --alpha: .7;
+    border-width: 1px;
+    --alpha: 1;
+}
+
+.paginator .paginator-tabs:hover{
+    --alpha: 1;
 }
 
 /* hire page */
@@ -780,7 +804,7 @@ input:checked + .slider {
     justify-content: space-between;
     align-items: center;
     padding: .25rem 1rem;
-    background-color: #faf7ffe9;
+    background-color: #faf7ffc9;
     border-radius: 5px;
 }
 
@@ -822,7 +846,7 @@ input:checked + .slider {
 }
 
 .optional-fields .form-tags.selected {
-    background-color: rgba(78, 112, 124, 0.554);
+    background-color: rgb(60, 133, 160);
     border-color: transparent;
     color: white;
 }
@@ -849,8 +873,7 @@ input:checked + .slider {
 }
 
 .article-heading {
-    font-size: 1.5rem;
-    margin: .25rem 0;
+    font-size: 1.25rem;
 }
 
 .article-img-stats {
@@ -879,7 +902,7 @@ input:checked + .slider {
 
 .article .img-wrapper img {
     inline-size: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/8;
     object-fit: cover;
 }
 
@@ -1208,9 +1231,7 @@ input:checked + .slider {
     }
 
     .project-img-wrapper {
-        block-size: 22.5vh;
-        aspect-ratio: 1/1;
-        align-self: center;
+        /* block-size: 30vh; */
     }
 
     .project-card .tag {
@@ -1218,15 +1239,15 @@ input:checked + .slider {
     }
 
     .project-card-details {
-        --gap: .5rem;
-        padding: 1rem;
+        gap: .5rem;
+        /* padding: 1rem; */
     }
     
-    .project-card .body {
+    /* .project-card .body {
         grid-template-columns: .5fr 1fr;
         padding: 1rem 2rem;
         --gap: 6rem;
-    }
+    } */
 
     .stack-category-icons {
         grid-template-columns: repeat(2, 1fr);
@@ -1305,18 +1326,13 @@ input:checked + .slider {
     }
 
     .project-img-wrapper {
-        inline-size: 100%;
-        aspect-ratio: 1/1;
+        /* block-size: 40vh;
+        inline-size: 100%; */
     }
 
-    .project-title {
+    /* .project-title {
         font-size: 1.25rem;
-    }
-
-    .project-card-details {
-        padding: 1rem 1rem 2rem;
-        --gap: 1rem;
-    }
+    } */
 
     /* blogs */
     .news-body {
@@ -1339,6 +1355,10 @@ input:checked + .slider {
     .item-header .item-reaction-items.mobile.visible,
     .item-header .show-mobile-reactions {
         display: block;
+    }
+
+    .article .img-wrapper img {
+        aspect-ratio: 16/12;
     }
     
 }
