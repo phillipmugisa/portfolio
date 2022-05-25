@@ -43,7 +43,7 @@ function App() {
               <Route path={appRoutes.projects} exact element={<ProjectsPage />} />
               <Route path={appRoutes.blogs} exact element={<BlogPage />} />
               <Route path={appRoutes.hire} exact element={<HirePage />} />
-              {/* <Route path={appRoutes.design} exact element={<DesignSystem />} /> */}
+              <Route path={appRoutes.design} exact element={<DesignSystem />} />
               <Route path={`${appRoutes.projects}/:slug/:id`} exact element={<SingleProjectPage />} />
               <Route path={`${appRoutes.blogs}/:slug/:id`} exact element={<SingleBlogPage />} />
               <Route path="*" element={<ErrorPage />} />
