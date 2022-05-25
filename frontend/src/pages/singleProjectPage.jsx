@@ -25,7 +25,7 @@ const SingleProjectPage = () => {
                         <img src={TestImg} alt="test" />
                     </div>
                 </div>
-                <div className="flex">
+                <div className="flex" style={{"flexWrap":"wrap"}}>
                     <div className="article-time-stats flex">
                         <span className="start-date">August 2019</span>
                         <span> - </span>
@@ -36,7 +36,7 @@ const SingleProjectPage = () => {
                         <span> : </span>
                         <span className="end-date">
                             <a
-                                href="www.github.com/phillipmugisa"
+                                href="https://www.github.com/phillipmugisa"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

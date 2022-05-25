@@ -50,7 +50,7 @@ const HirePage = () => {
         <section className="hire container grid">
             <div className="contact-intro grid">
                 <h3 className="txt-primary greetings">Thank you for showing interest in our services.</h3>
-                <p className="sub-greetings">Please fill in the following information and we shall get back to you as soon as possible.</p>
+                <p className="sub-greetings">Please fill in the following information, we shall get back to you as soon as possible.</p>
             </div>
             <div className="divider"></div>
             <div className="contact-form grid">
