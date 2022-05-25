@@ -1218,7 +1218,7 @@ input:checked + .slider {
     inline-size: 60vw;
     background-color: rgb(255, 255, 255);
     box-shadow: -2px -2px 4px solid #000333ba 2px 2px 4px solid #000333ba;
-    padding: 2%;
+    padding: 2rem 3rem;
     overflow: hidden;
     border-radius: .5rem;
     z-index: 10;
@@ -1386,7 +1386,7 @@ input:checked + .slider {
     }
 
     #comment-model {
-        inline-size: 80vw;
+        inline-size: 90vw;
     }
     
 }
