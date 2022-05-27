@@ -1,15 +1,83 @@
 // react
-import React, { useRef, useLayoutEffect } from  'react';
+import React, { useRef, useReducer } from  'react';
 
 // react-router-dom
 
-// components
+// custom hooks
+import usePost from '../hooks/usePost';
+import useFetch from '../hooks/useFetch';
+
+const initialState = {
+    title : "",
+    email : "",
+    description : "",
+    origin : "website",
+    field : [],
+    stack : []
+}
+
+const reducer = (state, action) => {
+    switch (action.type)
+    {
+        case "SETNAME":
+            return {...state, title: action.payload};
+        case "SETEMAIL":
+            return {...state, email: action.payload};
+        case "SETDESCRIPTION":
+            return {...state, description: action.payload};
+        case "SETFIELDS":
+            let field;
+            if (state.field.includes(action.payload))
+            {
+                field = state.field
+                field.map((obj, idx) => {
+                    if (obj === action.payload)
+                    {
+                        field.splice(idx, 1);
+                    }
+                    return true;
+                })
+            }
+            else
+            {
+                field = state.field;
+                field.push(action.payload);
+            }
+            return {field: field, ...state};
+        case "SETSTACKS":
+            let stack;
+            if (state.stack.includes(action.payload))
+            {
+                stack = state.stack
+                stack.map((obj, idx) => {
+                    if (obj === action.payload)
+                    {
+                        stack.splice(idx, 1);
+                    }
+                    return true;
+                })
+            }
+            else
+            {
+                stack = state.stack;
+                stack.push(action.payload);
+            }
+            return {stack: stack, ...state};
+
+        default:
+            return state;
+    }
+}
 
 const HirePage = () => {
 
     const formElem = useRef(null);
-    // const [ selectedCategories, setSelectedCategories ] = useState([]);
-    // const [ selectedStacks, setSelectedStacks ] = useState([]);
+
+    const fetchStacksState = useFetch('stacks/');
+    const fetchFieldsState = useFetch('fields/');
+    const postHandler = usePost('projects/');
+
+    const [state, dispatch] = useReducer(reducer, initialState)
 
     const showTags = (e) => {
         e.preventDefault();
@@ -31,20 +99,28 @@ const HirePage = () => {
         }
         else if (targetId === "stacks-lower-btn")
         {
-            document.getElementById("form-stacts")
+            document.getElementById("form-stacks")
                 .classList.toggle("visible");
         }
     }
 
-    useLayoutEffect(() => {
-        formElem.current.querySelectorAll(".form-tags").forEach(tag => {
-            tag.addEventListener("click", () => {
-                tag.classList.toggle("selected")
-                
-                // add tag to selectedCategories or selectedStacks
-            })
-        })
-    }, [])
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        postHandler(state);
+        formElem.current.reset();
+    }
+
+    const handleStackField = (elem, category, value) => {
+        elem.classList.toggle("selected");
+        if (category === "fields")
+        {
+            dispatch({type:"SETFIELDS", payload: value})
+        }
+        else if (category === "stacks")
+        {
+            dispatch({type:"SETSTACKS", payload: value})
+        }
+    }
 
     return (
         <section className="hire container grid">
@@ -54,19 +130,19 @@ const HirePage = () => {
             </div>
             <div className="divider"></div>
             <div className="contact-form grid">
-                <form action="" className='contact grid' ref={formElem}>
+                <form className='contact grid' ref={formElem} onSubmit={handleSubmit}>
                     <fieldset className='grid'>
                         <div className="form-group grid">
-                            <label htmlFor="name">Name</label>
-                            <input type="text" name="" id="name" />
+                            <label htmlFor="email">Email *</label>
+                            <input type="email" id="email" required onChange={event => dispatch({type:"SETEMAIL", payload: event.target.value})}/>
                         </div>
                         <div className="form-group grid">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" name="" id="email" />
+                            <label htmlFor="name">Project Name *</label>
+                            <input type="text" id="name" required onChange={event => dispatch({type:"SETNAME", payload: event.target.value})}/>
                         </div>
                         <div className="form-group grid">
-                            <label htmlFor="project-description">Project Description</label>
-                            <textarea rows="5" id="project-description"></textarea>
+                            <label htmlFor="project-description">Project Description *</label>
+                            <textarea rows="5" id="project-description" required onChange={event => dispatch({type:"SETDESCRIPTION", payload: event.target.value})}></textarea>
                         </div>
                     </fieldset>
 
@@ -77,10 +153,13 @@ const HirePage = () => {
                                 <button onClick={(e) => showTags(e)} id="categories-lower-btn">+</button>
                             </div>
                             <div className="body flex" id="categories-body">
-                                <span className="form-tags">Web Development</span>
-                                <span className="form-tags">Mobile Development</span>
-                                <span className="form-tags">UI/UX Design</span>
-                                <span className="form-tags">Linux</span>
+                                {
+                                    fetchFieldsState.data
+                                    &&
+                                    fetchFieldsState.data.results.map(
+                                        obj => <span className="form-tags" onClick={(e) => handleStackField(e.target, 'fields', obj.name)} key={`field-${obj.name}`}>{obj.name}</span>
+                                    )
+                                }
                             </div>
                         </div>
 
@@ -89,13 +168,16 @@ const HirePage = () => {
                                 <span className="header-text">Select Technologies</span>
                                 <button onClick={(e) => showTags(e)} id="stacks-lower-btn">+</button>
                             </div>
-                            <div className="body flex" id="form-stacts">
-                                <span className="form-tags">Django</span>
-                                <span className="form-tags">React</span>
-                                <span className="form-tags">Nginx</span>
-                                <span className="form-tags">Figma</span>
+                            <div className="body flex" id="form-stacks">
+                                {
+                                    fetchStacksState.data
+                                    &&
+                                    fetchStacksState.data.results.map(
+                                        obj => <span className="form-tags" onClick={(e) => handleStackField(e.target, 'stacks', obj.name)} key={`stack-${obj.name}`}>{obj.name}</span>
+                                    )
+                                }
                             </div>
-                    </div>
+                        </div>
                     </fieldset>
                     
                     <fieldset className="flex">

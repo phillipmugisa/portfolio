@@ -6,14 +6,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 // component
-import TestImg from './test.png'
+// import TestImg from './test.png'
 // import AppButton from './appButton'
 // import icons from './icons';
 
 // context
 import { AppContext } from '../../hooks/AppContext';
 
-const ProjectCard = ({ProjectId}) => {
+const ProjectCard = ({id, stack, field, title, slug, img_url}) => {
     
     const {appRoutes} = useContext(AppContext);
 
@@ -24,17 +24,29 @@ const ProjectCard = ({ProjectId}) => {
                 <ProjectCardStack icon={icons.Postgresql}/>
                 <ProjectCardStack icon={icons.React}/>
             </div> */}
-            <Link to={`${appRoutes.projects}/childsHope/1`}>
+            <Link to={`${appRoutes.projects}/${slug}/${id}`}>
                 <div className="body grid">
                     <div className="project-img-wrapper">
-                        <img src={TestImg} alt="test" />
+                        <img src={img_url} alt="test" />
                     </div>
                     <div className="project-card-details grid">
                         <div className="divider"></div>
-                        <h4 className="project-title txt-secondary">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h4>
+                        <h4 className="project-title txt-secondary">
+                            {title}
+                        </h4>
                         <ul className="news-category flex">
-                            <li>Web Development</li>
-                            <li>Django</li>
+                            <Link
+                                to={`${appRoutes.projects}/?search=${field[0]}`}
+                                className="footer-part-link"
+                            >
+                                <li>{field[0]}</li>
+                            </Link>
+                            <Link
+                                to={`${appRoutes.projects}/?search=${stack[0]}`}
+                                className="footer-part-link"
+                            >
+                                <li>{stack[0]}</li>
+                            </Link>
                         </ul>
                         {/* <p className="project-description">
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. A molestiae suscipit optio in? Aspernatur quis magnam repudiandae excepturi sunt consectetur provident quasi temporibus modi architecto deserunt eveniet doloremque magni, minus veritatis modi architecto
@@ -67,7 +79,7 @@ const ProjectCard = ({ProjectId}) => {
     );
 }
 
-const MinProjectCard = ({ProjectId}) => {
+const MinProjectCard = ({id, stack, field, title, slug, description}) => {
   
     const {appRoutes} = useContext(AppContext);
 
@@ -75,15 +87,27 @@ const MinProjectCard = ({ProjectId}) => {
         <div className="project-card mini grid">
             <div className="body grid">
                 <div className="project-card-details mini grid">
-                    <Link to={`${appRoutes.projects}/sheHarbour/2`}>
-                        <h4 className="project-title txt-secondary">Lorem ipsum dolor, sit amet consectetur.</h4>
+                    <Link to={`${appRoutes.projects}/${slug}/${id}`}>
+                        <h4 className="project-title txt-secondary">
+                            {title}
+                        </h4>
                     </Link>                    
                     <p className="project-description">
-                    One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back,
+                        {description.slice(0,100)}
                     </p>
                     <ul className="news-category flex">
-                        <li>Web Development</li>
-                        <li>Django</li>
+                        <Link
+                            to={`${appRoutes.projects}/?search=${field[0]}`}
+                            className="footer-part-link"
+                        >
+                            <li>{field[0]}</li>
+                        </Link>
+                        <Link
+                            to={`${appRoutes.projects}/?search=${stack[0]}`}
+                            className="footer-part-link"
+                        >
+                            <li>{stack[0]}</li>
+                        </Link>
                     </ul>
                 </div>
             </div>
@@ -100,11 +124,21 @@ const MinProjectCard = ({ProjectId}) => {
 // }
 
 ProjectCard.propTypes = {
-    ProjectId: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+    stack : PropTypes.array.isRequired,
+    field : PropTypes.array.isRequired,
+    title : PropTypes.string.isRequired,
+    slug : PropTypes.string.isRequired,
+    img_url : PropTypes.string
 }
 
 MinProjectCard.propTypes = {
-    ProjectId: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+    stack : PropTypes.array.isRequired,
+    field : PropTypes.array.isRequired,
+    title : PropTypes.string.isRequired,
+    slug : PropTypes.string.isRequired,
+    description : PropTypes.string.isRequired,
 }
  
 export {ProjectCard, MinProjectCard};

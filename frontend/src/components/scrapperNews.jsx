@@ -2,41 +2,91 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import SectionHeading from './utils/sectionHeading';
+import useFetch from '../hooks/useFetch';
 
 const ScrapperNews = () => {
+
+    const fetchState = useFetch('news');
+
     return (          
         <section className="news container grid">
             <div className="section-heading-wrapper grid">                
                 <SectionHeading headingText={"Tech News"} classes="txt-primary"/>
                 <p className="section-sub-heading txt-secondary">Please Note that the following news is scrapped from different sources.</p>
             </div>
-            <div className="news-body grid">
-                <NewsCard newsId = {1}/>
-                <NewsCard newsId = {1}/>
-                <NewsCard newsId = {1}/>
-                <NewsCard newsId = {1}/>
-                <NewsCard newsId = {1}/>
-                <NewsCard newsId = {1}/>
-            </div>
+                { !fetchState.data && <Preloader />}     
+                { fetchState.data &&
+                    <div className="news-body grid">
+                        {fetchState.data.results.map(obj => {
+                        return (
+                                <NewsCard key={obj.id} {...obj}/>
+                            )
+                        })}
+                    </div>
+                }
         </section>
     );
 }
 
-const NewsCard = () => {
+const NewsCard = ({id, title, news_url, description, source}) => {
     return (
-        <div className="news-card grid txt-white">
-            <h4 className="news-title">Lorem ipsum dolor sit amet</h4>
-            <p className="news-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit maxime voluptatum.</p>
-            <ul className="news-category flex">
-                <li>Web Development</li>
-                <li>Google News</li>
-            </ul>
-        </div>
+        <a
+            href={news_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            tooltip={title}
+        >
+            <div className="news-card grid txt-white">
+                <h4 className="news-title">{title.slice(0,25)}</h4>
+                <p className="news-description">{description.slice(0,100)}</p>
+                <ul className="news-category flex">
+                    <li>{source}</li>
+                </ul>
+            </div>
+        </a>
     );
+}
+
+const Preloader = () => {
+    return (
+        <div className="news-body grid">
+            <div className="news-card preloader grid txt-white">
+                <div className="news-title"></div>
+                <p className="news-description"></p>
+                <p className="news-description"></p>
+                <ul className="news-category flex">
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div className="news-card preloader grid txt-white">
+                <div className="news-title"></div>
+                <p className="news-description"></p>
+                <p className="news-description"></p>
+                <ul className="news-category flex">
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div className="news-card preloader grid txt-white">
+                <div className="news-title"></div>
+                <p className="news-description"></p>
+                <p className="news-description"></p>
+                <ul className="news-category flex">
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    )
 }
  
 NewsCard.propTypes = {
-    newsId : PropTypes.number.isRequired
+    id: PropTypes.string.isRequired,
+    title : PropTypes.string.isRequired,
+    news_url : PropTypes.string.isRequired,
+    source : PropTypes.string.isRequired,
+    description : PropTypes.string.isRequired,
 }
  
 export default ScrapperNews;

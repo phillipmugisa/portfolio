@@ -1,100 +1,158 @@
 // react
-import React from 'react'
+import React, {useContext} from 'react'
 
 // router
-// import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 // components
-import TestImg from '../components/utils/test2.png';
-import AppButton from '../components/utils/appButton';
 import { MinProjectCard } from '../components/utils/projectCards';
 import SectionHeading from '../components/utils/sectionHeading';
+import ArticlePreloader from '../components/utils/articlePreloader';
+
+// costom hooks
+import useFetch from '../hooks/useFetch';
+
+import { AppContext } from '../hooks/AppContext';
 
 const SingleProjectPage = () => {
 
-    // const { slug, id } = useParams();
+    const { slug, id } = useParams();
+    const fetchState = useFetch(`projects/${slug}`);
+
+    const {appRoutes} = useContext(AppContext);
 
     return (
         <React.Fragment>
-            <section className="article container grid">
-                <div className="article-start-infor grid">
-                    <h4 className="article-heading">ChildsHope Charity Organization Website</h4>
-                </div>
-                <div className="article-img-stats grid">
-                    <div className="img-wrapper grid">
-                        <img src={TestImg} alt="test" />
+            {
+                fetchState.error.isError
+                &&
+                <h1>{fetchState.error.error_code}</h1>
+            }
+            {
+                !fetchState.data
+                &&
+                <ArticlePreloader />
+            }
+            {
+                fetchState.data
+                &&
+                <section className="article container grid">
+                    <div className="article-start-infor grid">
+                        <h4 className="article-heading">
+                            {fetchState.data.title}
+                        </h4>
                     </div>
-                </div>
-                <div className="flex" style={{"flexWrap":"wrap"}}>
-                    <div className="article-time-stats flex">
-                        <span className="start-date">August 2019</span>
-                        <span> - </span>
-                        <span className="end-date">November 2021</span>
+                    <div className="divider"></div>
+                    <div className="article-img-stats grid">
+                        <div className="img-wrapper grid">
+                            { fetchState.data.img_url && <img loading="lazy" src={fetchState.data.img_url} alt={fetchState.data.title} /> }
+                        </div>
                     </div>
-                    <div className="article-time-stats flex git-link">
-                        <span className="start-date">GitHub</span>
-                        <span> : </span>
-                        <span className="end-date">
-                            <a
-                                href="https://www.github.com/phillipmugisa"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                www.github.com/phillipmugisa
+                    <div className="divider"></div>
+                    <div className="flex" style={{"flexWrap":"wrap"}}>
+                        <div className="article-time-stats flex">
+                            <span className="start-date">{fetchState.data.added_on}</span>
+                            <span> - </span>
+                            <span className="end-date">
+                                {fetchState.data.end_date ? fetchState.data.end_date : "To-Date"}
+                            </span>
+                        </div>
+                        <div className="article-time-stats flex git-link">
+                            <span className="start-date">GitHub</span>
+                            <span> : </span>
+                            <span className="end-date txt-accent">
+                                <a
+                                    href={fetchState.data.github_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                {fetchState.data.github_url}
                                 </a>
-                        </span>
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div className="article-category-tags flex">
-                    <AppButton
-                        classes="br-secondary txt-secondary outlined tag roundbr"
-                        text = 'UI/UX Design'
-                    />
-                    <AppButton
-                        classes="br-secondary txt-secondary outlined tag roundbr"
-                        text = 'Web Development'
-                    />
-                    <AppButton
-                        classes="br-secondary txt-secondary outlined tag roundbr"
-                        text = 'Mobile App Development'
-                    />
-                </div>
-                <p className="article-discription grid">
-                    One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.
-                    One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.
-                </p>
-                <div className="article-stacks-used grid gap-sm">
-                    <h4 className="article-stacks-used-heading txt-secondary">Technologies Used.</h4>
-                    <div className="article-stacks-used-body flex gap-sm">
-                        <AppButton
-                            classes="br-secondary txt-secondary outlined tag roundbr"
-                            text = 'Django'
-                        />
-                        <AppButton
-                            classes="br-secondary txt-secondary outlined tag roundbr"
-                            text = 'React'
-                        />
-                        <AppButton
-                            classes="br-secondary txt-secondary outlined tag roundbr"
-                            text = 'Postgres'
-                        />
+                    <div className="article-category-tags flex">
+                        {
+                            fetchState.data.field.map(obj => {
+                                return (
+                                    <Link
+                                        key={`${obj}-${id}`}
+                                        to={`${appRoutes.projects}/?search=${obj}`}
+                                        className="btn br-secondary txt-secondary outlined tag roundbr"
+                                    >
+                                        {obj}
+                                    </Link>
+                                )
+                            })
+                        }
                     </div>
-                </div>
-                <AppButton
-                    classes="bg-primary txt-white visit-site"
-                    text = 'Visit Project'
-                />
-            </section>
-            <section className="projects related container grid">
-                <SectionHeading headingText={"Related Projects"} classes="txt-secondary"/>
-                <div className="section-body grid">                    
-                    <MinProjectCard ProjectId={1}/>
-                    <MinProjectCard ProjectId={1} />
-                    <MinProjectCard ProjectId={1} />
-                </div>
-            </section>
+                    <p className="article-discription grid">
+                        {fetchState.data.description}
+                    </p>
+                    <div className="article-stacks-used grid gap-sm">
+                        <h4 className="article-stacks-used-heading txt-secondary">Technologies Used.</h4>
+                        <div className="article-stacks-used-body flex gap-sm">
+                            {
+                                fetchState.data.stack.map(obj => {
+                                    return (
+                                        <Link
+                                            key={`${obj}-${id}`}
+                                            to={`${appRoutes.projects}/?search=${obj}`}
+                                            className="btn br-secondary txt-secondary outlined tag roundbr"
+                                        >
+                                            {obj}
+                                        </Link>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+
+                    {
+                        fetchState.data.production_url
+                        &&
+                        <a
+                            href={fetchState.data.production_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn bg-primary txt-white visit-site"
+                        >
+                            Visit Project
+                        </a>
+                    }
+                </section>
+            }
+            {
+                fetchState.data 
+                &&
+                <RelatedProjects field={fetchState.data.field[0]} />
+            }
         </React.Fragment>
     );
+}
+
+const RelatedProjects = ({field}) => {
+
+    const _fetchState = useFetch(`projects/?search=${field}`);
+
+    return (
+        <section className="projects related container grid">
+            <SectionHeading headingText={"Related Projects"} classes="txt-secondary"/>
+            { 
+                _fetchState.data
+                &&
+                <div className="section-body grid"> 
+                    {
+                        _fetchState.data.results.slice(0,3).map(obj => {
+                        return (
+                                <MinProjectCard key={obj.id} {...obj}/>
+                            )
+                        })
+                    }
+                </div>
+            } 
+        </section>
+    )
 }
  
 export default SingleProjectPage;

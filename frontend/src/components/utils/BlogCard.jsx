@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 // context
 import { AppContext } from '../../hooks/AppContext';
 
-const BlogCard = ({blogId}) => {
+const BlogCard = ({id, title, slug, description}) => {
   
     const {appRoutes} = useContext(AppContext);
 
@@ -37,16 +37,18 @@ const BlogCard = ({blogId}) => {
 
     return (
         <div className="blog-card grid">
-            <Link to={`${appRoutes.blogs}/sheHarbour/${blogId}`}>                    
-                <h4 className="blog-card-title txt-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            <Link to={`${appRoutes.blogs}/${slug}/${id}`}>             
+                <h4 className="blog-card-title txt-primary">
+                    {title}
+                </h4>
             </Link>
             <p className="blog-card-description">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui non nemo dolorem, sed eligendi ipsa vero sapiente dignissimos natus ut.
+                {description.slice(0,120)}
             </p>
             <div className="blog-card-reaction flex mg-block-sm">
                 {icons.Heart}
                 {icons.Share}
-                <span onClick={() => showCommentModel(blogId)}>
+                <span onClick={() => showCommentModel(slug)}>
                     {icons.Comment}
                 </span>
             </div>
@@ -55,7 +57,10 @@ const BlogCard = ({blogId}) => {
 }
 
 BlogCard.propTypes = {
-    blogId: PropTypes.number.isRequired
+    id: PropTypes.string.isRequired,
+    title : PropTypes.string.isRequired,
+    slug : PropTypes.string.isRequired,
+    description : PropTypes.string.isRequired,
 }
 
 export default BlogCard;

@@ -1,21 +1,48 @@
-import React, { useRef, useEffect, useContext } from "react";
+// react
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 
+// icons
 import { 
     FaGithub, FaInstagram, FaLinkedinIn,
     FaPhoneAlt, FaMapMarkedAlt, FaArrowUp
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
+// components
 import AppButton from './appButton';
 import CommentModel from './models/commentModel';
+import { AlertWidget } from './widgets';
 
+// custom hooks
+import useFetch from '../../hooks/useFetch';
+import usePost from '../../hooks/usePost';
+
+// context
 import { AppContext } from '../../hooks/AppContext';
+
 
 const Footer = () => {
 
+    const [subscriberEmail, setSubscriberEmail] = useState(null);
+
     const toTopElem = useRef(null);
-    const {appRoutes} = useContext(AppContext);
+    const subscriber_form = useRef(null)
+    const {appRoutes, postResponse} = useContext(AppContext);
+
+    const fetchState = useFetch('stackstats/');
+    const postHandler = usePost('subscribe/');
+
+    const subscribeHandler = (e) => {
+        e.preventDefault()
+        if (subscriberEmail !== null && subscriberEmail !== "")
+        {
+            let data = {"email" : subscriberEmail};
+            postHandler(data);
+            setSubscriberEmail(null);
+            subscriber_form.current.reset();
+        }
+    }
 
     useEffect(() => {
         window.addEventListener("scroll", function() {
@@ -46,6 +73,7 @@ const Footer = () => {
 
     return (
         <>
+            {postResponse && <AlertWidget {...postResponse.data.messages}/>}
             <div className="toTop grid" ref={toTopElem} onClick={() => window.scrollTo({top:0, behavior: 'smooth'})}>                
                 <AppButton
                     classes="bg-secondary txt-white"
@@ -53,6 +81,13 @@ const Footer = () => {
                 >
                     <FaArrowUp />
                 </AppButton>
+            </div>
+            <div className="page-loader">
+                <div className="loader">
+                    <span>M</span>
+                    <span>t</span>
+                    <span>D</span>
+                </div>
             </div>
             <CommentModel />
             <footer className="grid bg-secondary">
@@ -83,15 +118,30 @@ const Footer = () => {
                                 </div>
                             </div>
                             <div className="social-icons flex">
-                                <NavLink to="" className="icon">
+                                <a
+                                    href="https://www.github.com/phillipmugisa"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="icon"
+                                >
                                     <FaGithub />
-                                </NavLink>
-                                <NavLink to="" className="icon">
+                                </a>
+                                <a
+                                    href="https://www.github.com/phillipmugisa"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="icon"
+                                >
                                     <FaInstagram />
-                                </NavLink>
-                                <NavLink to="" className="icon">
+                                </a>
+                                <a
+                                    href="https://www.github.com/phillipmugisa"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="icon"
+                                >
                                     <FaLinkedinIn />
-                                </NavLink>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -101,12 +151,21 @@ const Footer = () => {
                         </h5>
                         <div className="footer-part-body grid">
                             <div className="footer-part-links grid">
-                                <NavLink to="" className="footer-part-link">Django (10)</NavLink>
-                                <NavLink to="" className="footer-part-link">Postgres (10)</NavLink>
-                                <NavLink to="" className="footer-part-link">React (10)</NavLink>
-                                <NavLink to="" className="footer-part-link">Figma (10)</NavLink>
-                                <NavLink to="" className="footer-part-link">Adobe (10)</NavLink>
-                                <NavLink to="" className="footer-part-link">Vanilla JavaScript (10)</NavLink>
+                                {
+                                    fetchState.data
+                                    &&
+                                    Object.keys(fetchState.data).map(key => {
+                                        return (
+                                            <NavLink
+                                                key={key}
+                                                to={`${appRoutes.projects}/?search=${key}`}
+                                                className="footer-part-link"
+                                            >
+                                                {key.slice(0,10)} ({fetchState.data[key]})
+                                            </NavLink>
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                     </div>
@@ -129,8 +188,8 @@ const Footer = () => {
                         </h5>
                         <div className="footer-part-body grid">
                             <p className="footer-part-intro">Get timely updates right in your inbox.</p>
-                            <form action="">
-                                <input type="email" name="" id="name_field" placeholder="Email..." />
+                            <form onSubmit={subscribeHandler} ref={subscriber_form}>
+                                <input type="email" id="email_field" placeholder="Email..." required onChangeCapture={(e) => setSubscriberEmail(e.target.value)}/>
                                 <input type="submit" value="Subscribe" className="btn bg-accent txt-white"/>
                             </form>
                         </div>

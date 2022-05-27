@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 
 // app routes
 const routes = {
@@ -15,8 +15,13 @@ export const AppContext = createContext(routes);
 
 export const AppContextProvider = (props) => {
     
+    const [postResponse, setPostResponse] = useState(null)
     const [mobileNavOpen, setMobileNavOpen] = useState(false)
     const [settingsMobalOpen, setSettingsMobalOpen] = useState(false)
+
+    useEffect(() => {
+        
+    }, [postResponse, mobileNavOpen, settingsMobalOpen])
 
     return (
         <AppContext.Provider
@@ -25,7 +30,9 @@ export const AppContextProvider = (props) => {
                 mobileNavOpen : mobileNavOpen,
                 setMobileNavOpen : setMobileNavOpen,
                 settingsMobalOpen : settingsMobalOpen,                
-                setSettingsMobalOpen : setSettingsMobalOpen
+                setSettingsMobalOpen : setSettingsMobalOpen,
+                postResponse : postResponse,
+                setPostResponse : setPostResponse
             }}
         >
             { props.children }

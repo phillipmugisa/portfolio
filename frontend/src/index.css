@@ -416,6 +416,15 @@ header ul {
   font-size: .9rem;
 }
 
+header:not(.elevated) {
+  border: 1px solid hsla(0, 0%, 90%, 0.5);
+  border-width: 0 0 1px;
+}
+
+header:not(.elevated) ul {
+  padding: 1rem 0;
+}
+
 header ul.mobile {
   display: none;
 }

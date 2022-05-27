@@ -29,8 +29,22 @@ function App() {
 
   const appRoutes = useContext(AppContext);
   
+  const removeLoader = () => {
+    const dummy = new Promise((resolve, reject) => {
+      setTimeout(() => {resolve("s")}, 2000)
+    })
+    dummy.then(() => {
+
+      document.querySelector('.page-loader').style.display = 'none'
+    })
+  }
+
   useEffect(() => {
+
+    removeLoader()
+
     window.scrollTo({top:0, behavior: 'smooth'})
+
   },[location.pathname]);
 
   return (

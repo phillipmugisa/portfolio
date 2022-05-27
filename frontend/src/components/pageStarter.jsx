@@ -1,10 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import PropTypes from "prop-types";
 
+import {NavLink} from 'react-router-dom';
+
 import AppButton from "./utils/appButton";
+import { AppContext } from '../hooks/AppContext';
 // import ToggleButton from "./utils/toggleButton";
 
 const PageStarter = () => {
+
+    const {appRoutes} = useContext(AppContext);
 
     // const handleToggleSwitchChange = (onState) => {
     //     // redirect basing on state
@@ -18,16 +23,28 @@ const PageStarter = () => {
                     {/* <h1 className="page-heading">I am Mugisa Phillip</h1> */}
                     <TypeWriter
                         text1="I am Mugisa Phillip"
-                        // text2="I am a full stack web developer"
+                        text2="I am a full stack web developer"
                         classes="page-heading"
                         speed={1}
                     />
                     <h3 className="page-sub-heading">Offering solutions to all your Software needs.</h3>
                 </div>
                 <ul className="news-category flex gap-1">
-                    <li>UI/UX Design</li>
-                    <li>Web Development</li>
-                    <li>Mobile App Development</li>
+                    <NavLink
+                        to={`${appRoutes.projects}/?search=UI/UX Design`}
+                    >
+                        <li>UI/UX Design</li>
+                    </NavLink>
+                    <NavLink
+                        to={`${appRoutes.projects}/?search=Web Development`}
+                    >
+                        <li>Web Development</li>
+                    </NavLink>
+                    <NavLink
+                        to={`${appRoutes.projects}/?search=Mobile App Development`}
+                    >
+                        <li>Mobile App Development</li>
+                    </NavLink>
                 </ul>
                 {/* <div className="tags gap-sm flex">
                     <AppButton
