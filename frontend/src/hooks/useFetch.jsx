@@ -6,7 +6,7 @@ const useFetch = (url) => {
         data: null, error: {isError: false, error_code : null}
     });
 
-    const BACKEND_URL = "http://localhost:8000/api/"
+    const BACKEND_URL = "https://phillipmugisa03.pythonanywhere.com/api/"
 
     const fetchData = async () => {
         const response = await fetch(`${BACKEND_URL}${url}`, {
