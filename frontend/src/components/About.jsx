@@ -11,7 +11,7 @@ const About = () => {
                 </div>
                 <div className="about-discription grid">
                     <p>
-                        I am Mugisa Phillip, a Full-Stack Software Developer with 4 years working experience. I am well-verse with various technologies in different software fields ranging from web development, mobile application development, Ui/Ux Design etc.
+                        I am Mugisa Phillip, a Full-Stack Software Developer with 4 years working experience. I am well-versed with various technologies in different software fields ranging from web development, mobile application development, Ui/Ux Design etc.
                         <br/>
                         My years of experience are backed with various projects which have exposed me to the different tasks in the different software fields.
                     </p>
