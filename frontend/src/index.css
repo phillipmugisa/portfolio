@@ -380,7 +380,7 @@ input,
 textarea {
   padding: 0.5rem 1rem;
   outline: none;
-  border: 1px solid hsl(var(--text-color) / .7);
+  border: 1px solid hsl(var(--text-color) / .4);
   border-radius: 5px;
 }
 
@@ -390,8 +390,15 @@ input[type="submit"] {
   padding: 0.5rem 1.5rem;
 }
 
-input:focus {
-  border-color: hsl(var(--accent-color) / 1);
+input:focus,
+textarea:focus {
+  border-width: 2px;
+  border-color: hsl(var(--accent-color) / .8);
+}
+
+.form-error {
+  color: red;
+  font-size: .9rem;
 }
 
 header {
@@ -425,6 +432,10 @@ header:not(.elevated) ul {
   padding: 1rem 0;
 }
 
+header ul {
+  padding: 0 0 .5rem;
+}
+
 header ul.mobile {
   display: none;
 }
@@ -453,7 +464,7 @@ header ul .logo .btn {
   /* inline-size: 100%; */
   border: none;
   text-transform: none;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 header ul .btn {
@@ -475,6 +486,7 @@ header ul.mobile .md-tabs {
   padding: .5rem 1rem;
   block-size: 100%;
   font-size: .9rem;
+  align-self: center;
 }
 
 header ul.mobile .md-tabs:not(.logo) {
@@ -502,7 +514,7 @@ header ul.mobile .md-tabs:not(.logo):focus {
 }
 
 .mobile-menu-tabs {
-  top: 3.65rem;
+  top: 3.6rem;
   right: 0;
   /* block-size: 50%; */
   padding: 5% 0;
@@ -581,7 +593,13 @@ header ul.mobile .md-tabs:not(.logo):focus {
 .mobile-settings .settings-cta {
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
+  justify-content: center;
   gap: 0rem;
+}
+
+.mobile-settings .settings-cta > * {
+  display: grid;
+  place-items: center;
 }
 
 .mobile-settings .settings-cta > .bg-secondary:focus{
@@ -633,7 +651,7 @@ main.fade::after {
   block-size: 100%;
   top: 0;
   position: absolute;
-  background-color: hsla(237, 87%, 5%, 0.785);
+  background-color: hsla(237, 87%, 5%, 0.585);
 }
 
 /* footer */

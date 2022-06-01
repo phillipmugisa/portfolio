@@ -4,6 +4,34 @@ from authentication.models import User
 import uuid
 from django.contrib.humanize.templatetags.humanize import naturaltime
 
+
+class UserRegisterSerializer(serializers.ModelSerializer):
+    confirm_password = serializers.CharField(style={"input_type":"password"}, write_only=True)
+    class Meta:
+        model = User
+        fields = ("username", "first_name", "last_name", 'email', "img_url", "password", "confirm_password")
+        extra_kwargs = {
+            "password" : {"write_only" : True}
+        }
+
+    def save(self, *args, **kwargs):
+        user  = User(
+            username = self.validated_data['username'],
+            first_name = self.validated_data['first_name'],
+            last_name = self.validated_data['last_name'],
+            img_url = self.validated_data['img_url'],
+        )
+
+        password = self.validated_data['password']
+        confirm_password = self.validated_data['confirm_password']
+
+        if password != confirm_password:
+            raise serializers.ValidationError({'password' : "Passwords dont match"})
+        user.set_password(password)
+        user.save()
+        return user
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

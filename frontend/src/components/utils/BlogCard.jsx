@@ -11,9 +11,13 @@ import { Link } from 'react-router-dom';
 // context
 import { AppContext } from '../../hooks/AppContext';
 
+// custom hooks
+import usePost from '../../hooks/usePost';
+
 const BlogCard = ({id, title, slug, description}) => {
   
     const {appRoutes} = useContext(AppContext);
+    const postLikeHandler = usePost(`reactions/blogs/${slug}`);
 
     const showCommentModel = (id) => {
 
@@ -46,7 +50,9 @@ const BlogCard = ({id, title, slug, description}) => {
                 {description.slice(0,120)}
             </p>
             <div className="blog-card-reaction flex mg-block-sm">
-                {icons.Heart}
+                <div onClick={() => postLikeHandler()}>
+                    {icons.Heart}
+                </div>
                 {icons.Share}
                 <span onClick={() => showCommentModel(slug)}>
                     {icons.Comment}

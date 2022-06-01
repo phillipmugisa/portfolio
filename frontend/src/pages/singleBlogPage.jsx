@@ -182,7 +182,7 @@ const Reactions = ({fetchState}) => {
                                 fetchState.data.result.map((obj) => {
                                     return (
                                         <div key={`min-${obj.id}`} className="reaction-item">
-                                            <img loading="lazy" src={obj.user.img_url} alt={obj.user.username} />
+                                            <img loading="lazy" src={`http://localhost:8000${obj.user.img_url}`} alt={obj.user.username} />
                                         </div>
                                     )
                                 })
@@ -205,7 +205,7 @@ const Reactions = ({fetchState}) => {
                                         <div className="item-header flex">
                                             <div className="user-details flex">                                    
                                                 <div className="item-image grid">
-                                                    <img loading="lazy" src={obj.user.img_url} alt={obj.user.username} />
+                                                    <img loading="lazy" src={`http://localhost:8000${obj.user.img_url}`} alt={obj.user.username} />
                                                 </div>
                                                 <h4 className="reactor-name txt-secondary">{obj.user.username}</h4>
                                             </div>

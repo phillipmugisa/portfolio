@@ -19,21 +19,19 @@ const ProjectCard = ({id, stack, field, title, slug, img_url}) => {
 
     return (
         <div className="project-card grid">
-            {/* <div className="project-stacks grid">
-                <ProjectCardStack icon={icons.Django}/>
-                <ProjectCardStack icon={icons.Postgresql}/>
-                <ProjectCardStack icon={icons.React}/>
-            </div> */}
-            <Link to={`${appRoutes.projects}/${slug}/${id}`}>
                 <div className="body grid">
-                    <div className="project-img-wrapper">
-                        <img src={img_url} alt="test" />
-                    </div>
+                    <Link to={`${appRoutes.projects}/${slug}/${id}`}>
+                        <div className="project-img-wrapper">
+                            <img src={img_url} alt="test" />
+                        </div>
+                    </Link>
                     <div className="project-card-details grid">
                         <div className="divider"></div>
-                        <h4 className="project-title txt-secondary">
-                            {title}
-                        </h4>
+                        <Link to={`${appRoutes.projects}/${slug}/${id}`}>
+                            <h4 className="project-title txt-secondary">
+                                {title}
+                            </h4>
+                        </Link>
                         <ul className="news-category flex">
                             <Link
                                 to={`${appRoutes.projects}/?search=${field[0]}`}
@@ -48,33 +46,8 @@ const ProjectCard = ({id, stack, field, title, slug, img_url}) => {
                                 <li>{stack[0]}</li>
                             </Link>
                         </ul>
-                        {/* <p className="project-description">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. A molestiae suscipit optio in? Aspernatur quis magnam repudiandae excepturi sunt consectetur provident quasi temporibus modi architecto deserunt eveniet doloremque magni, minus veritatis modi architecto
-                        </p> */}
-                        {/* <div className="project-tags flex">
-                            <AppButton
-                                classes="br-secondary txt-secondary outlined tag roundbr"
-                                text = 'UI/UX Design'
-                            />
-                            <AppButton
-                                classes="br-secondary txt-secondary outlined tag roundbr"
-                                text = 'Web Development'
-                            />
-                            <AppButton
-                                classes="br-secondary txt-secondary outlined tag roundbr"
-                                text = 'Mobile App Development'
-                            />
-                        </div> */}
-
-                        {/* <AppButton
-                            classes="bg-secondary txt-white cta roundbr"
-                        >
-                            <Link to={`${appRoutes.projects}/childsHope/1`}>View Project</Link>
-                        </AppButton> */}
-
                     </div>
                 </div>
-            </Link>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-    /* design system */
+/* design system */
 
 .design-system-child > .title {
     padding: .5rem 1rem;
@@ -100,7 +100,22 @@ button.tag:not(.outlined):focus,
 }
 
 /* header */
-
+.desktop-settings{
+    align-self: center;
+    border-radius: 10px;
+    padding: 1rem;
+    color: rgb(146, 146, 146);
+    /* box-shadow: .5px .5px .5px inset rgba(173, 173, 173, 0.418),
+    -.5px -.5px .5px inset rgba(173, 173, 173, 0.418); */
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+.desktop-settings:hover{
+    color: hsl(var(--primary-color) / var(--alpha));
+}
+.mobile-settings {
+    inline-size: auto;
+}
 header {
     position: sticky;
     position: -webkit-sticky;
@@ -108,6 +123,10 @@ header {
     /* background : white;
     box-shadow : 0 1px 3px rgba(0, 0, 0, 0.205); */
     z-index: 2;
+    grid-template-columns: 1fr .01fr;
+    padding: 0 1rem;
+    justify-items: space-evenly;
+    justify-content: space-evenly;
 }
 
 header.elevated {
@@ -505,7 +524,7 @@ input:checked + .slider {
 
 .stack-category-title {
     text-transform: uppercase;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     font-weight: 400;
     color: hsl(var(--text-color) / .85)
 }
@@ -1220,18 +1239,77 @@ input:checked + .slider {
     display: none;
 }
 .model.in-view{display: grid;}
+.model,
 #comment-model {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     inline-size: 60vw;
-    background-color: rgb(255, 255, 255);
-    box-shadow: -2px -2px 4px solid #000333ba 2px 2px 4px solid #000333ba;
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: 1px 1px 1px #3f3f4148, -1px -1px 1px #3f3f4148;
     padding: 2rem;
     overflow: hidden;
     border-radius: .5rem;
-    z-index: 10;
+    z-index: 7;
+    max-height: 95vh;
+    overflow-y: auto;
+}
+.auth-model {
+    inline-size: 50vw;
+}
+
+.auth-model.siguup {
+    inline-size: 70vw;
+}
+
+
+.auth-model .model-header {
+    text-transform: capitalize;
+    justify-content: space-between;
+}
+
+.auth-model .model-header button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    color: hsl(0, 0%, 30%);
+    font-weight: bold;
+}
+
+.auth-model .form-group.flex .form-group {
+    inline-size: 100%;
+}
+
+.auth-model .social-auth {
+    align-items: center;
+    justify-self: center;
+}
+
+.auth-model .social-auth span {
+    font-weight: 500;
+}
+
+.auth-model .social-auth-btn {
+    --color: hsl(var(--secondary-color) / 1);
+    padding: 8px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--color);
+    border: 1px solid var(--color);
+    transition: .2s ease-in-out;
+}
+.auth-model .social-auth-btn:hover {
+    --color: hsl(var(--accent-color) / 1);
+}
+
+.auth-model .create-account {
+    justify-self: center;
+    color: hsl(var(--accent-color) / 1);
+    cursor: pointer;
 }
 
 .page-loader {
@@ -1404,7 +1482,7 @@ input:checked + .slider {
 .alert-widget {
     position: fixed;
     top: 15%;
-    right: 5%;
+    right: 5vw;
     max-inline-size: 400px;
     padding: 1rem 1.5rem;
     border: none;
@@ -1416,6 +1494,7 @@ input:checked + .slider {
 
     background-color: hsl(var(--alert-color)/.8);
     color: white;
+    z-index: 20;
 }
 
 .alert-widget.infor {
@@ -1434,7 +1513,7 @@ input:checked + .slider {
         right: -50%;
     }
     to {
-        right: 5%;
+        right: 5vw;
     }
 }
 
@@ -1500,6 +1579,14 @@ input:checked + .slider {
     .blogs-body.grid-list {
         grid-template-columns: repeat(2, 1fr);
     }
+    /* modals */
+    .models,
+    .auth-model.siguup,
+    #comment-model {
+        inline-size: 80%;
+        justify-content: center;
+    }
+    .auth-model .form-group.flex {display: grid}
 
 }
 
@@ -1604,8 +1691,11 @@ input:checked + .slider {
         aspect-ratio: 16/12;
     }
 
+    .model,
+    .auth-model.siguup,
     #comment-model {
-        inline-size: 90vw;
+        inline-size: 90%;
+        justify-content: center;
     }
     .blogs-body.grid-list {
         grid-template-columns: 1fr;
@@ -1618,6 +1708,16 @@ input:checked + .slider {
         to {
             right: 0%;
         }
+    }
+    .alert-widget {
+        max-inline-size: 90vw;
+        right: 5vw;
+    }
+    header ul * {
+        place-items: center;
+    }
+    .desktop-settings{
+        display: none;
     }
     
 }

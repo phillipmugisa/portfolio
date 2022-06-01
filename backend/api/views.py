@@ -79,6 +79,19 @@ class BlogCommentViews(generics.ListCreateAPIView):
             "result" : serializer.data
         }, status = status.HTTP_200_OK)
 
+    def post(self, request, **kwargs):
+        try:
+            blog = Blog.objects.filter(slug=kwargs.get("blog_slug", 0)).first()
+            serializer = self.get_serializer(data = request.data)
+            if serializer.is_valid():
+                comment = BlogComment(**serializer.validated_data, blog=blog)
+                comment.save()
+                return Response(data = {"data" : serializer.data, "messages" : {"alertType" : "success", "alertMsg" : f"Comment posted succuessfully."}})
+        except Exception as e:
+            print(e)
+            return Response(data={"messages" : {"alertType" : "error", "alertMsg" : f"Opps! An error occured. Try again!"}}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
+
 
 class CommentView(viewsets.ModelViewSet):
     queryset = BlogComment.objects.all()
@@ -90,6 +103,7 @@ class CommentView(viewsets.ModelViewSet):
 class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
+    permission_classes = [permissions.AllowAny]
 
 class ReactionCountView(APIView):
     permission_classes = [permissions.AllowAny]
@@ -107,7 +121,6 @@ class ReactionCountView(APIView):
 
     def post(self, request, **kwargs):
         blog = Blog.objects.get(slug=kwargs.get("blog_slug", 0))
-        # chech if user has already liked this blog
         
         if request.user.is_authenticated:
             blog_reaction = BlogReaction.objects.filter(user=request.user, blog=blog)
@@ -120,8 +133,10 @@ class ReactionCountView(APIView):
                     reaction.save()
                     serializer = serializers.BlogReactionSerializer(reaction)
                     if serializer:
-                        return Response(serializer.data, status=status.HTTP_201_CREATED)
-                except:
+                        data = {"data" : serializer.data, "messages" : {"alertType" : "success", "alertMsg" : f"Reaction posted."}}
+                        return Response(data, status=status.HTTP_201_CREATED)
+                except Exception as Err:
+                    raise(Err)
                     return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
             return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
@@ -197,3 +212,28 @@ class FieldView(viewsets.ModelViewSet):
     queryset = Field.objects.all()
     serializer_class = serializers.FieldSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+class UserRegisterView(APIView):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserRegisterSerializer
+    permission_classes = [permissions.AllowAny]
+    http_method_names = ['post']
+
+    def post(self, request, **kwargs):
+        try:
+            # check is user is already subscribed
+            print(request.data)
+            serializer = self.serializer_class(data = request.data)
+            if serializer.is_valid():
+                # check if username exists
+                if not User.objects.filter(username=serializer.validated_data.get('username')).exists():
+                    # create user
+                    serializer.save()
+                    return Response(status=status.HTTP_201_CREATED)
+                else:
+                    return Response(data={"username" : "Username not available"}, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response(data={"messages" : {"alertType" : "error", "alertMsg" : f"Opps! An error occured. Try again!"}}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

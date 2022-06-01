@@ -37,7 +37,7 @@ const ToggleButton = ({defaultOn, defaultOff, onChange}) => {
                 {defaultOff}
             </label>
             <label className="switch">
-                <input type="checkbox" checked = {switchState} onChange={() => handleChange()} />
+                <input type="checkbox" disabled checked = {switchState} onChange={() => handleChange()} />
                 <span className="slider round"></span>
             </label>
             <label

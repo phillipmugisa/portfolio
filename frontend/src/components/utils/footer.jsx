@@ -13,6 +13,7 @@ import { MdEmail } from "react-icons/md";
 import AppButton from './appButton';
 import CommentModel from './models/commentModel';
 import { AlertWidget } from './widgets';
+import { LoginModel,SignUpModel } from './models/authModel';
 
 // custom hooks
 import useFetch from '../../hooks/useFetch';
@@ -28,7 +29,7 @@ const Footer = () => {
 
     const toTopElem = useRef(null);
     const subscriber_form = useRef(null)
-    const {appRoutes, postResponse} = useContext(AppContext);
+    const {appRoutes, postResponse, loginModalIsOpen, signupModalIsOpen, setLoginModalIsOpen} = useContext(AppContext);
 
     const fetchState = useFetch('stackstats/');
     const postHandler = usePost('subscribe/');
@@ -90,6 +91,8 @@ const Footer = () => {
                 </div>
             </div>
             <CommentModel />
+            {loginModalIsOpen && <LoginModel />}
+            {signupModalIsOpen && <SignUpModel />}
             <footer className="grid bg-secondary">
                 <div className="container grid">
                     <div className="footer-part grid">
@@ -104,7 +107,7 @@ const Footer = () => {
                                     </span>
                                     <p>+256 782 047 612</p>
                                 </div>
-                                <div className="contact-item flex">
+                                <div onClick={()=>setLoginModalIsOpen(true)} className="contact-item flex">
                                     <span className="icon">
                                         <MdEmail />
                                     </span>

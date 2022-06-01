@@ -5,7 +5,7 @@ function AppButton(props) {
     const classes = props.classes || '';
     const text = props.text;
     const disabled = props.disabled || false;
-    const onClickHandler = props.onClick;
+    const onClickHandler = props.onClickHandler;
 
     return (
         <button

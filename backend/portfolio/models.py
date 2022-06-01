@@ -352,7 +352,7 @@ class ScrapedNews(models.Model):
 
 class BlogReaction(models.Model):
     blog = models.OneToOneField(to=Blog, related_name="blog", on_delete=models.CASCADE)
-    user = models.OneToOneField(to=User, related_name="user", on_delete=models.CASCADE)
+    user = models.ForeignKey(to=User, related_name="user", on_delete=models.CASCADE)
     added_on = models.DateTimeField(
         _("liked On"),
         default=timezone.now,

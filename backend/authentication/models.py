@@ -14,7 +14,8 @@ def get_file_path(instance, filename):
 class User(AbstractUser):
     img_url = models.ImageField(
         verbose_name=_('Profile Image'),
-        upload_to=get_file_path
+        upload_to=get_file_path,
+        default='default.png'
     )
 
     def __str__(self) -> str:
