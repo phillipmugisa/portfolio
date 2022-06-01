@@ -8,7 +8,7 @@ const usePost = (url) => {
 
     const { setPostResponse, setLoginModalIsOpen, setHasTokens } = useContext(AppContext);
 
-    const BACKEND_URL = "http://localhost:8000/api/";
+    const BACKEND_URL = "https://phillipmugisa03.pythonanywhere.com/api/";
 
     const makeRequest = async (data, passed_url) => {
         const _url = passed_url ? passed_url : url;
