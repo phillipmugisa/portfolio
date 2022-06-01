@@ -8,7 +8,7 @@ const useAuth = (url) => {
 
     const { setPostResponse, setLoginModalIsOpen, setSignupModalIsOpen, setHasTokens } = useContext(AppContext);
 
-    const BACKEND_URL = "http://localhost:8000/api/";
+    const BACKEND_URL = "https://phillipmugisa03.pythonanywhere.com/api/";
 
     const makeRequest = async (data, headers) => {
         return await fetch(`${BACKEND_URL}${url}`, {
