@@ -159,7 +159,7 @@ class Stack(models.Model):
         return f'{self.name}'
 
     def save(self, *args, **kwargs):
-        self.title = self.title.title()
+        self.title = self.name.title()
 
         super().save(*args, **kwargs)
 
@@ -188,7 +188,7 @@ class Field(models.Model):
         return f'{self.name}'
 
     def save(self, *args, **kwargs):
-        self.title = self.title.title()
+        self.title = self.name.title()
 
         super().save(*args, **kwargs)
 
@@ -272,56 +272,6 @@ class Project(models.Model):
 
     def __str__(self) -> str:
         return f'{self.title}'
-
-
-class ScrapedNews(models.Model):
-    class Meta:
-        ordering = ("-added_on",)
-
-    title = models.CharField(
-        _("News Headline"),
-        max_length=100,
-        blank=False,
-        null=False
-    )
-    slug = models.SlugField(
-        _("Safe Url"),
-        unique=True,
-        blank = True,
-        null = True,
-    )
-    description = models.CharField(
-        _("News Description"),
-        max_length=100,
-        blank=False,
-        null=False
-    )
-    source = models.CharField(
-        _("News Source"),
-        max_length=100,
-        blank=False,
-        null=False
-    )
-    added_on = models.DateTimeField(
-        _("Upload On"),
-        default=timezone.now,
-    )
-    news_url = models.URLField(
-        _("News Url"),
-        blank=False,
-        null=False
-    )
-
-    def __str__(self) -> str:
-        return f'{self.title}'
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title[:50])
-        
-        self.title = self.title.title()
-
-        super().save(*args, **kwargs)
 
 
 # signals

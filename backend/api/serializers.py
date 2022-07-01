@@ -139,16 +139,6 @@ class BlogReactionSerializer(serializers.ModelSerializer):
         representation['id'] = uuid.uuid4()
         return representation
 
-class ScrapedNewsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.ScrapedNews
-        fields = "__all__"
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['id'] = uuid.uuid4()
-        return representation
-
 class SubscriberSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Subscriber

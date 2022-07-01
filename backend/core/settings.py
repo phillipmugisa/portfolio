@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt',
+    'news_scrapper.apps.NewsScrapperConfig',
 ]
 
 MIDDLEWARE = [
@@ -158,7 +159,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
 ]
 
-CORS_URLS_REGEX = r'^/api/.*$'
+# CORS_URLS_REGEX = r'^/api|news/.*$'
 
 
 SIMPLE_JWT = {

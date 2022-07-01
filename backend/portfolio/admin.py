@@ -5,7 +5,6 @@ admin.site.register(models.Project)
 admin.site.register(models.Blog)
 admin.site.register(models.Stack)
 admin.site.register(models.Field)
-admin.site.register(models.ScrapedNews)
 admin.site.register(models.Subscriber)
 
 admin.site.register(models.BlogComment)
