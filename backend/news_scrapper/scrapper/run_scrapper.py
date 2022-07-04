@@ -1,4 +1,5 @@
-from news_scrapper import serializers, models
+from news_scrapper import serializers
+from news_scrapper import models
 from news_scrapper.scrapper.scrapper import NytScrapper, GoogleNewsScrapper, YahooNewsScrapper, ScrapperException
 
 import json
@@ -38,12 +39,9 @@ def main():
     # google_scrapper = GoogleNewsScrapper()
     # yahoo_news_scrapper = YahooNewsScrapper()
 
-    # # fetch data
+    # fetch data
     # for cls in [nyt_scrapper, google_scrapper, yahoo_news_scrapper]:
     #     source_id, obj = fetch_data(cls)
     #     save_to_db(source_id, obj)
 
     pass
-
-if __name__ == "__main__":
-    main()
