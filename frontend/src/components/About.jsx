@@ -29,7 +29,7 @@ const About = () => {
                             <span className="value">English</span>
                         </p>
                     </div>
-                    <a href={process.env.PUBLIC_URL + '/Phillip_Mugisa_Resume.pdf'} download="resume" className="text-link hr-accent txt-white" style={{'justifySelf':'flex-end'}}>                             
+                    <a href={process.env.PUBLIC_URL + '/Resume.pdf'} download="resume" className="text-link hr-accent txt-white" style={{'justifySelf':'flex-end'}}>                             
                         Download Resume
                     </a>
                 </div>
