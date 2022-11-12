@@ -63,11 +63,16 @@ const PageStarter = () => {
                         onClickUrl=''
                     />
                 </div> */}
-                <AppButton
-                    classes="bg-primary txt-white cta roundbr"
-                    text = 'Hire Me'
-                    onClickUrl=''
-                />
+                <NavLink
+                        to={appRoutes.hire}
+                    >
+                    <AppButton
+                        classes="bg-primary txt-white cta roundbr"
+                        text = 'Hire Me'
+                        onClickUrl=''
+                    />
+                </NavLink>
+                
             </div>
             {/* <div className="right">
                 <ToggleButton
