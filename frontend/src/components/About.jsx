@@ -20,10 +20,6 @@ const About = () => {
                             <span className="title">Work Experience</span>
                             <span className="value">4 years</span>
                         </p>
-//                         <p>
-//                             <span className="title">Age</span>
-//                             <span className="value">21</span>
-//                         </p>
                         <p>
                             <span className="title">Language</span>
                             <span className="value">English</span>
