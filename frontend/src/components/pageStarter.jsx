@@ -46,41 +46,14 @@ const PageStarter = () => {
                         <li>Mobile App Development</li>
                     </NavLink>
                 </ul>
-                {/* <div className="tags gap-sm flex">
-                    <AppButton
-                        classes="br-secondary txt-secondary outlined tag roundbr"
-                        text = 'UI/UX Design'
-                        onClickUrl=''
-                    />
-                    <AppButton
-                        classes="br-secondary txt-secondary outlined tag roundbr"
-                        text = 'Web Development'
-                        onClickUrl=''
-                    />
-                    <AppButton
-                        classes="br-secondary txt-secondary outlined tag roundbr"
-                        text = 'Mobile App Development'
-                        onClickUrl=''
-                    />
-                </div> */}
-                <NavLink
-                        to={appRoutes.hire}
-                    >
-                    <AppButton
-                        classes="bg-primary txt-white cta roundbr"
-                        text = 'Hire Me'
-                        onClickUrl=''
-                    />
-                </NavLink>
+                <AppButton
+                    classes="bg-primary txt-white cta roundbr"
+                    text = 'Hire Me'
+                    onClickUrl=''
+                />
                 
             </div>
-            {/* <div className="right">
-                <ToggleButton
-                    defaultOn="Vanilla JavaScript"
-                    defaultOff="React"
-                    onChange={handleToggleSwitchChange}
-                />
-            </div> */}
+            
             <div className="bottom">
                 {/* <div className="pre-resume grid gap-1">
                     <div className="resume-card flex">
