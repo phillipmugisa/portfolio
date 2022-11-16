@@ -1689,7 +1689,7 @@ input:checked + .slider {
     .article .img-wrapper,
     .article .img-wrapper img,
     .article .img-wrapper::after {
-        max-inline-size: 90vh;
+        max-inline-size: 90vw;
         aspect-ratio: 16/12;
     }
 
