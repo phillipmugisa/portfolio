@@ -905,7 +905,6 @@ input:checked + .slider {
 
 .article .img-wrapper {
     inline-size: 100%;
-    max-inline-size: 100vw;
 }
 
 .article .img-wrapper::after {
@@ -1689,6 +1688,7 @@ input:checked + .slider {
 
     .article .img-wrapper,
     .article .img-wrapper img {
+        max-inline-size: 90vh;
         aspect-ratio: 16/12;
     }
 
