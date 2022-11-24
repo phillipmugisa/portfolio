@@ -91,7 +91,7 @@ const SingleProjectPage = () => {
                     </p>
                     <div className="article-stacks-used grid gap-sm">
                         <h4 className="article-stacks-used-heading txt-secondary">Technologies Used.</h4>
-                        <div className="article-stacks-used-body flex gap-sm" style="flex-wrap: wrap">
+                        <div className="article-stacks-used-body flex gap-sm" style={{flexWrap: "wrap"}}>
                             {
                                 fetchState.data.stack.map(obj => {
                                     return (
