@@ -5,6 +5,4 @@ class NewsScrapperConfig(AppConfig):
     name = 'news_scrapper'
 
     def ready(self) -> None:
-        from news_scrapper.scrapper import run_scrapper
-        run_scrapper.main()
         return super().ready()

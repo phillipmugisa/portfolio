@@ -27,7 +27,8 @@ SECRET_KEY = os.environ.get('PORTFOLIO_DJANGO_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["phillipmugisa03.pythoneverywhere.com","localhost"]
+# ALLOWED_HOSTS = ["phillipmugisa03.pythoneverywhere.com","localhost"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition

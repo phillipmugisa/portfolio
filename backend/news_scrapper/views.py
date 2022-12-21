@@ -3,9 +3,11 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .serializers import NewsSerializer
 from .models import NewsArticle
-from rest_framework import pagination
+from rest_framework import pagination, response
 from rest_framework import filters
+from rest_framework.views import View
 from django.db.models import Q
+from django.http import HttpResponse
 
 class CustomPagination(pagination.PageNumberPagination):
     page_size = 10
@@ -28,3 +30,10 @@ class NewsListView(viewsets.ModelViewSet):
     pagination_class = CustomPagination
     filter_backends = [CustomSearchFilter]
     # filterset_fields = ['category', 'source__name']
+
+class ScrapperActivator(View):
+    def get(self, request, *args, **kwargs):
+        from news_scrapper.scrapper import run_scrapper
+        run_scrapper.main()
+
+        return HttpResponse("Scrapping done!!")

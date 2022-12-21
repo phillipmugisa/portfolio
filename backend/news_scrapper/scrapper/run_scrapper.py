@@ -35,13 +35,11 @@ def fetch_data(cls: object):
         
 
 def main():
-    # nyt_scrapper = NytScrapper()
-    # google_scrapper = GoogleNewsScrapper()
-    # yahoo_news_scrapper = YahooNewsScrapper()
+    nyt_scrapper = NytScrapper()
+    google_scrapper = GoogleNewsScrapper()
+    yahoo_news_scrapper = YahooNewsScrapper()
 
-    # # fetch data
-    # for cls in [nyt_scrapper, google_scrapper, yahoo_news_scrapper]:
-    #     source_id, obj = fetch_data(cls)
-    #     save_to_db(source_id, obj)
-
-    pass
+    # fetch data
+    for cls in [nyt_scrapper, google_scrapper, yahoo_news_scrapper]:
+        source_id, obj = fetch_data(cls)
+        save_to_db(source_id, obj)
