@@ -170,13 +170,6 @@ class StackFieldStats(APIView):
             return Response(data, status= status.HTTP_200_OK)
         except:
             return Response(status= status.HTTP_200_OK)
-
-class ScrapedNewsViews(viewsets.ModelViewSet):
-    serializer_class = serializers.ScrapedNewsSerializer
-    queryset = ScrapedNews.objects.all()
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    lookup_field = 'slug'
-
 class SubscriberView(APIView):
     serializer_class = serializers.SubscriberSerializer
     permission_classes = [permissions.AllowAny]

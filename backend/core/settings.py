@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import os
-import psycopg2
 from pathlib import Path
 from datetime import timedelta
 
@@ -46,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt',
+    'news_scrapper.apps.NewsScrapperConfig',
 ]
 
 MIDDLEWARE = [
@@ -167,7 +167,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://mugisathedev.netlify.app/'
 ]
 
-CORS_URLS_REGEX = r'^/api/.*$'
+# CORS_URLS_REGEX = r'^/api|news/.*$'
 
 
 SIMPLE_JWT = {
