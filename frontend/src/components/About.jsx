@@ -7,7 +7,7 @@ const About = () => {
             <SectionHeading headingText={"Who is mugisa?"} classes="txt-white"/>
             <div className="about-body container grid">
                 <div className="img-wrapper">
-                    <img loading="lazy" src={process.env.PUBLIC_URL + '/Me.jpg'} alt="phillip mugisa" className="about-img" />
+                    <img loading="lazy" src={process.env.PUBLIC_URL + '/me.jpeg'} alt="phillip mugisa" className="about-img" />
                 </div>
                 <div className="about-discription grid">
                     <p>
