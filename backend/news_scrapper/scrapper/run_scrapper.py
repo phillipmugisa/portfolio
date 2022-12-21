@@ -39,7 +39,7 @@ def main():
     # google_scrapper = GoogleNewsScrapper()
     # yahoo_news_scrapper = YahooNewsScrapper()
 
-    # fetch data
+    # # fetch data
     # for cls in [nyt_scrapper, google_scrapper, yahoo_news_scrapper]:
     #     source_id, obj = fetch_data(cls)
     #     save_to_db(source_id, obj)
