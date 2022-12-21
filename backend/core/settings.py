@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('PORTFOLIO_DJANGO_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["phillipmugisa03.pythoneverywhere.com",]
+ALLOWED_HOSTS = ["phillipmugisa03.pythoneverywhere.com","localhost"]
 
 
 # Application definition
@@ -164,7 +164,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:3000',
     'http://localhost:3000',
-    'https://mugisathedev.netlify.app/'
+    # 'https://mugisathedev.netlify.app/'
 ]
 
 # CORS_URLS_REGEX = r'^/api|news/.*$'
