@@ -234,7 +234,10 @@ class BaseScrapper(object):
 
                 if all(x in article_data.keys() for x in ['title', 'url', 'img_url']):
                     result['count'] += 1
-                    result['articles'].append(article_data)                    
+                    result['articles'].append(article_data)
+                
+                    if result['count'] > 50:
+                        break
 
             except Exception as Err:
                 raise Err
@@ -245,16 +248,6 @@ class BaseScrapper(object):
         return result
 
     def run(self):
-        # threads = []
-        # for category in self.get_categories().keys():
-        #     thread = Thread(target=self.scrap_category, args=[category])
-        #     thread.start()
-        #     threads.append(thread)
-        #     sleep(5)
-
-        # for thread in threads:
-        #     thread.join()
-
         result = list()
 
         with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -315,11 +308,11 @@ class GoogleNewsScrapper(BaseScrapper):
         # set article attributes
         self.set_article_attrs(
             {
-                'article' : {'css' : 'div.NiLAwe.y6IFtc.R7GTQ.keNKEd.j7vNaf.nID9nc', 'element' : 'div'},
-                'url' : {'css': 'a.DY5T1d.RZIKme', 'element' : 'a'},
-                'date' : {'css': 'time.WW6dff.uQIVzc.Sksgp', 'element' : 'time'},
-                'title' : {'css' : 'a.DY5T1d.RZIKme', 'element' : 'a'},
-                'img_url' : {'css': 'figure.tvs3Id.QwxBBf', 'element' : 'figure'},
+                'article' : {'css' : 'article.IBr9hb', 'element' : 'article'},
+                'url' : {'css': 'a.WwrzSb', 'element' : 'a'},
+                'date' : {'css': 'time.hvbAAd', 'element' : 'time'},
+                'title' : {'css' : 'h4.gPFEn', 'element' : 'a'},
+                'img_url' : {'css': 'img.Quavad', 'element' : 'img'},
             }
         )
 
@@ -333,7 +326,7 @@ class YahooNewsScrapper(BaseScrapper):
     NAME = "Yahoo News"
     def __init__(self):
         # set base url
-        # self.set_base_url('https://www.yahoo.com')
+        self.set_base_url('https://www.yahoo.com')
 
         # query parameters
         self.country = 'US'

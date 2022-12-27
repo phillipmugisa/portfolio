@@ -26,9 +26,8 @@ class NewsArticle(models.Model):
     class Meta:
         ordering = ("-added_on",)
 
-    title = models.CharField(
+    title = models.TextField(
         _("News Headline"),
-        max_length=500,
         blank=False,
         null=False
     )
@@ -40,9 +39,8 @@ class NewsArticle(models.Model):
         null=False
     )
 
-    description = models.CharField(
+    description = models.TextField(
         _("News Description"),
-        max_length=500,
         blank=True,
         null=True
     )
@@ -52,13 +50,14 @@ class NewsArticle(models.Model):
     url = models.URLField(
         _("News Url"),
         blank=False,
-        null=False
+        null=False,
+        max_length=500
     )
     img_url = models.URLField(
         _("Image Url"),
         blank=False,
         null=False,
-        max_length=500
+        max_length=1000
     )
     posted_on = models.DateTimeField(
         _("Posted On"),
@@ -71,4 +70,4 @@ class NewsArticle(models.Model):
     )
 
     def __str__(self) -> str:
-        return f'{self.title}'
+        return f'{self.source} - {self.title}'
