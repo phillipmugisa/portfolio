@@ -15,7 +15,7 @@ const useFetch = (url) => {
     }
 
     const fetchData = async () => {
-        const response = await fetch(`${BACKEND_URL}${url}`, {
+        const response = await fetch(`${BACKEND_URL}${url}/`, {
             method: "GET",
             mode: "cors",
             cache: "no-cache",
