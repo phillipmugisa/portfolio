@@ -28,10 +28,10 @@ const ScrapperNews = () => {
     );
 }
 
-const NewsCard = ({id, title, news_url, description, source}) => {
+const NewsCard = ({id, title, url, description, source}) => {
     return (
         <a
-            href={news_url}
+            href={url}
             target="_blank"
             rel="noopener noreferrer"
             tooltip={title}
@@ -84,7 +84,7 @@ const Preloader = () => {
 NewsCard.propTypes = {
     id: PropTypes.string.isRequired,
     title : PropTypes.string.isRequired,
-    news_url : PropTypes.string.isRequired,
+    url : PropTypes.string.isRequired,
     source : PropTypes.string.isRequired,
     description : PropTypes.string.isRequired,
 }

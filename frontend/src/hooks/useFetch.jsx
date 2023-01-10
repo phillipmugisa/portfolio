@@ -6,7 +6,13 @@ const useFetch = (url) => {
         data: null, error: {isError: false, error_code : null}
     });
 
-    const BACKEND_URL = "https://phillipmugisa03.pythonanywhere.com/api/"
+    let BACKEND_URL;
+    if (url == "news") {
+        BACKEND_URL = "https://app.ilazy.net/"
+    }
+    else {
+        BACKEND_URL = "https://phillipmugisa03.pythonanywhere.com/api/"
+    }
 
     const fetchData = async () => {
         const response = await fetch(`${BACKEND_URL}${url}`, {
