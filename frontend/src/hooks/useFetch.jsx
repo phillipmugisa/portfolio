@@ -7,7 +7,7 @@ const useFetch = (url) => {
     });
 
     let BACKEND_URL;
-    if (url == "news") {
+    if (url === "news") {
         BACKEND_URL = "https://app.ilazy.net/"
     }
     else {
